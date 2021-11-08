@@ -8,7 +8,7 @@
       <link href="/2021/11/08/%E3%80%8A%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-2/"/>
       <url>/2021/11/08/%E3%80%8A%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-2/</url>
       
-        <content type="html"><![CDATA[<p>为了方便查找，添加了站内搜索功能！</p><h1 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h1><ol><li><pre><code>npm install hexo-generator-search --save在管理员模式下的命令行(cmd)输入以上内容下载插件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">2. 打开主题配置文件，ctrl+f 查找 local_search 将 enable 的 false 改成 true </span><br><span class="line"></span><br><span class="line">3. 打开配置文件(不是主题配置文件！)拖到最下面，插入以下行：</span><br><span class="line"></span><br></pre></td></tr></table></figure>search:  path: search.xml  field: post  format: html  limit: 1000</code></pre><p>注意search前面一定不要有空格！！否则会变成二级指令！！yml格式的文档按照缩进来分层次！！</p></li></ol>]]></content>
+        <content type="html"><![CDATA[<p>为了方便查找，添加了站内搜索功能！</p><h1 id="具体流程"><a href="#具体流程" class="headerlink" title="具体流程"></a>具体流程</h1><ol><li><code>npm install hexo-generator-search --save</code><br>在管理员模式下的命令行(cmd)输入以上内容下载插件</li><li>打开主题配置文件，ctrl+f 查找 local_search 将 enable 的 false 改成 true </li><li>打开配置文件(不是主题配置文件！)拖到最下面，插入以下行：<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">search:</span><br><span class="line">  path: search.xml</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  limit: <span class="number">1000</span></span><br></pre></td></tr></table></figure>注意search前面一定不要有空格！！否则会变成二级指令！！yml格式的文档按照缩进来分层次！！</li></ol>]]></content>
       
       
       <categories>
@@ -17,6 +17,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 维护博客 </tag>
+            
+        </tags>
       
     </entry>
     
@@ -324,6 +330,12 @@
           
       </categories>
       
+      
+        <tags>
+            
+            <tag> 维护博客 </tag>
+            
+        </tags>
       
     </entry>
     
