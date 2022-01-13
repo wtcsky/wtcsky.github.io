@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>Python与Java的安装和配置</title>
+      <link href="/2022/01/13/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Python%E4%B8%8EJava%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/"/>
+      <url>/2022/01/13/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Python%E4%B8%8EJava%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><h2 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h2><p><a href="https://www.python.org/downloads/">Download Python | Python.org</a>直接在官网下载即可</p><h2 id="配置："><a href="#配置：" class="headerlink" title="配置："></a>配置：</h2><p>Python的配置比较简单，只要在打开安装包的时候选中 Add Python 3.10 to PATH 就可以自动帮你添加环境变量了。</p><p>参考博客:<a href="https://blog.csdn.net/Como0413/article/details/106636705?ops_request_misc=%7B%22request_id%22:%22164204537216780271966979%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=164204537216780271966979&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-106636705.first_rank_v2_pc_rank_v29&utm_term=python%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187">python安装与配置步骤</a></p><h1 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h1><h2 id="安装：-1"><a href="#安装：-1" class="headerlink" title="安装："></a>安装：</h2><p><a href="https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe">Java安装包</a></p><h2 id="配置：-1"><a href="#配置：-1" class="headerlink" title="配置："></a>配置：</h2><p>找到jdk文件的位置。</p><p>打开我的电脑(此电脑)的界面，然后右键属性，高级系统设置(也可以直接用windows自带的搜索功能搜索高级系统设置)，打开环境变量。</p><p>在下面的系统变量中添加</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">变量名:JAVA_HOME</span><br><span class="line">变量值：(文件地址，默认为C:\Program Files\Java\jdk-17.0.1)</span><br></pre></td></tr></table></figure><p>再添加一个(全部复制！不要忽略点.！！！)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">变量名:CLASSPATH</span><br><span class="line">变量值:.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</span><br></pre></td></tr></table></figure><p>在系统变量的列表中找到PATH这一项，点击编辑，新建两个变量</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\bin</span><br><span class="line">%JAVA_HOME%\jre\bin</span><br></pre></td></tr></table></figure><p>点击确定，再点击确定！</p><p>只要WIN + R 输入CMD然后 输入java 和 javac都可以出来一大坨东西而不是无法识别java就可以了！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《实用软件/工具》 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Tool </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>闲谈-2 正在放寒假</title>
+      <link href="/2022/01/13/%E3%80%8A%E9%97%B2%E8%B0%88%E5%BD%95%E3%80%8B/%E9%97%B2%E8%B0%88-2/"/>
+      <url>/2022/01/13/%E3%80%8A%E9%97%B2%E8%B0%88%E5%BD%95%E3%80%8B/%E9%97%B2%E8%B0%88-2/</url>
+      
+        <content type="html"><![CDATA[<p>其实已经放假有一段时间了，一直也没有更新博客(主要是比较懒)。</p><p>上学的时间因为最后几个周都在复习课程，也有一段时间没有把刷的题整理到博客上，略微有点懈怠了，还是希望寒假能多学点东西！</p><p>在年前争取每天都会更新一篇博客吧，不一定是什么。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《闲谈录》 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 闲谈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>STL讲课内容</title>
       <link href="/2022/01/01/%E3%80%8A%E5%85%B6%E4%BB%96%E3%80%8B/STL%E8%AE%B2%E8%AF%BE/"/>
       <url>/2022/01/01/%E3%80%8A%E5%85%B6%E4%BB%96%E3%80%8B/STL%E8%AE%B2%E8%AF%BE/</url>
