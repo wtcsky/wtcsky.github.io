@@ -566,11 +566,11 @@
     
     
     <entry>
-      <title>写Markdown用Typora！</title>
-      <link href="/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Typora%E6%8E%A8%E8%8D%90/"/>
-      <url>/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Typora%E6%8E%A8%E8%8D%90/</url>
+      <title>CP Editor写个CodeForce也变炫酷喽!</title>
+      <link href="/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/CP%20Editor%E6%8E%A8%E8%8D%90/"/>
+      <url>/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/CP%20Editor%E6%8E%A8%E8%8D%90/</url>
       
-        <content type="html"><![CDATA[<p><img src="https://i.loli.net/2021/11/02/HibmgOWQ7wCpBxz.png" alt="s"></p><p>安装地址:<a href="https://www.typora.io/#windows">Typora — a markdown editor, markdown reader.</a></p><p>Typora我觉得是一款不错的Markdown阅读器、编辑器(实际上我也只用这个嘿嘿)。</p><p>安装没啥难度，下载安装就好了，无需配置，进去就可以用了。</p><p>如果不会写Markdown，可以简单的学一下语法<br><a href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟教程Markdown</a></p><p>用这个记笔记也是一个不错的选择！！</p><p><img src="https://i.loli.net/2021/11/02/HUPV4Keg9xhNwqD.png" alt="Typora示意图.png"></p>]]></content>
+        <content type="html"><![CDATA[<p>安装地址:<a href="https://cpeditor.org/download/">Download CP Editor | CP Editor</a></p><p>最近在CF做题，发现学姐交的一个题上有小广告^^，然后发现了这个宝藏IDE，确实在CF上做题用这个IDE很不错！！</p><p>在这里放一个B站UP主的完整配置过程：</p><p><a href="https://www.bilibili.com/video/BV1mX4y1V7S8">简单的 CP Editor 使用教程！_bilibili</a> ，UP主已经讲的很详细了，这个可能需要配置一下，不是下载以后直接用。</p><p>配合插件competitive companion食用更佳!!这个插件在CF页面点一下就可以把样例自动复制到CP Editor上面并且打开一个新的页并定位好题在CF上的位置。</p><p>讲一下完整过程：</p><ol><li>安装</li><li>需要再PATH里配置C++,MinGW,(我安装的里面没有带？)<a href="https://sourceforge.net/projects/mingw-w64/">MinGW-w64 - for 32 and 64 bit Windows download | SourceForge.net</a>，没有的话下载这个，然后放在CP Editor的目录里</li><li>在环境变量 PATH 里面加入 CP Editor目录里的 MinGW 里的 bin</li><li><a href="https://github.com/xalanq/cf-tool/releases/tag/v1.0.0">Release v1.0.0 Release! · xalanq/cf-tool · GitHub</a> ，这个是CF插件视频里会提到。</li><li><a href="https://chrome.google.com/webstore/detail/competitive-companion/cjnmckjndlpiamhfimnnjmnckgghkjbl/related?hl=zh-CN">Competitive Companion - Chrome 网上应用店 (google.com)</a> ，这个是网页插件，需要魔法，也可以在网上找一找。</li></ol><p>写CF用这个感觉针不戳！</p><p><img src="https://i.loli.net/2021/11/02/UYrbt4Qk9IoeCZ5.png" alt="CP Editor示意图.png"></p><p>当然也不尬吹，用这个debug感觉不太妙啊……</p>]]></content>
       
       
       <categories>
@@ -591,11 +591,11 @@
     
     
     <entry>
-      <title>CP Editor写个CodeForce也变炫酷喽!</title>
-      <link href="/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/CP%20Editor%E6%8E%A8%E8%8D%90/"/>
-      <url>/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/CP%20Editor%E6%8E%A8%E8%8D%90/</url>
+      <title>写Markdown用Typora！</title>
+      <link href="/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Typora%E6%8E%A8%E8%8D%90/"/>
+      <url>/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Typora%E6%8E%A8%E8%8D%90/</url>
       
-        <content type="html"><![CDATA[<p>安装地址:<a href="https://cpeditor.org/download/">Download CP Editor | CP Editor</a></p><p>最近在CF做题，发现学姐交的一个题上有小广告^^，然后发现了这个宝藏IDE，确实在CF上做题用这个IDE很不错！！</p><p>在这里放一个B站UP主的完整配置过程：</p><p><a href="https://www.bilibili.com/video/BV1mX4y1V7S8">简单的 CP Editor 使用教程！_bilibili</a> ，UP主已经讲的很详细了，这个可能需要配置一下，不是下载以后直接用。</p><p>配合插件competitive companion食用更佳!!这个插件在CF页面点一下就可以把样例自动复制到CP Editor上面并且打开一个新的页并定位好题在CF上的位置。</p><p>讲一下完整过程：</p><ol><li>安装</li><li>需要再PATH里配置C++,MinGW,(我安装的里面没有带？)<a href="https://sourceforge.net/projects/mingw-w64/">MinGW-w64 - for 32 and 64 bit Windows download | SourceForge.net</a>，没有的话下载这个，然后放在CP Editor的目录里</li><li>在环境变量 PATH 里面加入 CP Editor目录里的 MinGW 里的 bin</li><li><a href="https://github.com/xalanq/cf-tool/releases/tag/v1.0.0">Release v1.0.0 Release! · xalanq/cf-tool · GitHub</a> ，这个是CF插件视频里会提到。</li><li><a href="https://chrome.google.com/webstore/detail/competitive-companion/cjnmckjndlpiamhfimnnjmnckgghkjbl/related?hl=zh-CN">Competitive Companion - Chrome 网上应用店 (google.com)</a> ，这个是网页插件，需要魔法，也可以在网上找一找。</li></ol><p>写CF用这个感觉针不戳！</p><p><img src="https://i.loli.net/2021/11/02/UYrbt4Qk9IoeCZ5.png" alt="CP Editor示意图.png"></p><p>当然也不尬吹，用这个debug感觉不太妙啊……</p>]]></content>
+        <content type="html"><![CDATA[<p><img src="https://i.loli.net/2021/11/02/HibmgOWQ7wCpBxz.png" alt="s"></p><p>安装地址:<a href="https://www.typora.io/#windows">Typora — a markdown editor, markdown reader.</a></p><p>Typora我觉得是一款不错的Markdown阅读器、编辑器(实际上我也只用这个嘿嘿)。</p><p>安装没啥难度，下载安装就好了，无需配置，进去就可以用了。</p><p>如果不会写Markdown，可以简单的学一下语法<br><a href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟教程Markdown</a></p><p>用这个记笔记也是一个不错的选择！！</p><p><img src="https://i.loli.net/2021/11/02/HUPV4Keg9xhNwqD.png" alt="Typora示意图.png"></p>]]></content>
       
       
       <categories>
