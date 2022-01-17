@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>最短路问题</title>
+      <link href="/2022/01/17/%E3%80%8A%E5%85%B3%E4%BA%8E%E7%AE%97%E6%B3%95%E3%80%8B/%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98/"/>
+      <url>/2022/01/17/%E3%80%8A%E5%85%B3%E4%BA%8E%E7%AE%97%E6%B3%95%E3%80%8B/%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<p><img src="https://s2.loli.net/2022/01/17/4MCshSND1LJcErK.jpg" alt="最短路.jpg"></p><p>单源最短路:求一个点(dist[1])到其他点的最短路</p><p>多源最短路:求任意两个点之间的最短路</p><p>稠密图-&gt;邻接矩阵存储 m和n^2一个级别</p><p>稀疏图-&gt;邻接表存储  m和n一个级别</p><h1 id="1-迪杰斯特拉-Dijkstra"><a href="#1-迪杰斯特拉-Dijkstra" class="headerlink" title="1 . 迪杰斯特拉(Dijkstra)"></a>1 . 迪杰斯特拉(Dijkstra)</h1><p><img src="https://s2.loli.net/2022/01/17/N4pYEjsS9TAeBZF.png" alt="Dijkstar.png"></p><h2 id="CODE"><a href="#CODE" class="headerlink" title="CODE:"></a>CODE:</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">代码：</span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e4</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> dist[N];</span><br><span class="line"><span class="keyword">int</span> link[N][N];</span><br><span class="line"><span class="keyword">int</span> k[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">dist[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)  dist[i] = <span class="number">0x3f3f3f</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">link[i][j] = <span class="number">0x3f3f3f</span>; </span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">int</span> t = <span class="number">-1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++) </span><br><span class="line"><span class="keyword">if</span>(!k[j] &amp;&amp; (t==<span class="number">-1</span>||dist[j]&lt;dist[t]))</span><br><span class="line">t = j;</span><br><span class="line">k[t] = <span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)</span><br><span class="line">dist[j] = <span class="built_in">min</span>(dist[j],dist[t]+link[t][j]);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>dist[i]存储的是 某个位置(一般是dist[1])到位置i所需要的最短距离<br>link[i] [j]存储的是 位置i到位置j的距离(注意有向图还是无向图）<br>k[i]用来标记是否已经使用了该位置。<br>1的初始位置设为0，其他设为∞.</p><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p><img src="https://s2.loli.net/2022/01/17/KWdFheUNLsuE8yH.png" alt="dijkstar1.png"></p><p>如果是这样的情况找到的第一个t就是位置1(其他的最初都是∞,位置1就是最小的)</p><p>首先从位置1试探从位置1到位置2 dist[2]=1 ,从位置1到位置3 dist[3]=4</p><p>第二次找到的t是位置2</p><p>然后从位置2试探，发现经过位置2到位置3总距离 &lt; 直接从位置1到位置3 </p><p>即dist[2] + link[2] [3] &lt; dist[3] 所以把 dist[3]修改为3. </p><p>最后找到的t是位置3</p><p>3不能到达任何位置 结束。</p><h3 id="那么为什么要找距离起点最近的点，而不按照顺序来找？"><a href="#那么为什么要找距离起点最近的点，而不按照顺序来找？" class="headerlink" title="那么为什么要找距离起点最近的点，而不按照顺序来找？"></a>那么为什么要找距离起点最近的点，而不按照顺序来找？</h3><p><img src="https://s2.loli.net/2022/01/17/kJnf2bLhcVvSQdT.png" alt="dijkstar2.png"></p><p>这样的话，如果按照1,2,3,4的顺序来操作就会导致操作时该位置的dist不是最优的，所以该位置对其他位置的操作得到的dist也不是最优的。(从1到2最优的做法是 1-&gt;3-&gt;2 而不是 1-&gt;2，很明显后者比前者多走了1单位距离，那么得到的dist[4]也会相应的多走了一个单位)</p><p>由此我们可知我们必须要找到某个位置最优的dist之后才可以使用该点操作。</p><h3 id="为什么已经操作过的位置不需要再次操作？"><a href="#为什么已经操作过的位置不需要再次操作？" class="headerlink" title="为什么已经操作过的位置不需要再次操作？"></a>为什么已经操作过的位置不需要再次操作？</h3><p>如果一个位置已经操作过了，说明他已经得到了最优的dist。</p><p>因为按照之前那个问题，找到的都是距离起点最近的点</p><p>那么在这个点之后找到的点都不可能影响到该点最优的dist。</p><p>在一个位置修改的位置只可能大于他本身的位置dist[t] + dist[t][i] &gt; dist[t]</p><p>所以说,当你找到这个点的时候他就已经是经历过操作的最优的情况了，在他之后的dist只会大于它。</p><h3 id="Dijkstra算法为什么不能用于有负边权的图？"><a href="#Dijkstra算法为什么不能用于有负边权的图？" class="headerlink" title="Dijkstra算法为什么不能用于有负边权的图？"></a>Dijkstra算法为什么不能用于有负边权的图？</h3><p><img src="https://s2.loli.net/2022/01/17/pbR5oz91J7eFfQ3.png" alt="dijkstar3.png"></p><p> 因为Dijkstra算法是通过当前离起点最近的点来更新其他的点的距离，例如上图中的 4 号结点会被 2 号结点更新为2+1=3</p><p>但实际上4号结点的最短路径是3+(-2)=1，这样你就知道为什么Dijkstra算法不能用于有负权的边的图吧。</p><h1 id="2-SPFA"><a href="#2-SPFA" class="headerlink" title="2 . SPFA"></a>2 . SPFA</h1>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《关于算法》 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 最短路问题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>关闭同步输入/输出流</title>
+      <link href="/2022/01/17/%E3%80%8A%E5%85%B6%E4%BB%96%E3%80%8B/%E5%85%B3%E9%97%AD%E5%90%8C%E6%AD%A5%E8%BE%93%E5%85%A5(%E5%87%BA)%E6%B5%81/"/>
+      <url>/2022/01/17/%E3%80%8A%E5%85%B6%E4%BB%96%E3%80%8B/%E5%85%B3%E9%97%AD%E5%90%8C%E6%AD%A5%E8%BE%93%E5%85%A5(%E5%87%BA)%E6%B5%81/</url>
+      
+        <content type="html"><![CDATA[<p>有时候做练习会卡cin(超时)。</p><p>这样的话就可以用到这样一行代码</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br></pre></td></tr></table></figure><p>cin和cout效率低是因为要先把输入输出的东西存入管冲去，再输出。</p><p>那么这段语句关闭了cin和cout与标准输入输出流之间(stdio)的同步关系，这样的话cin和cout的效率就可以和scanf和printf相当。</p><p>但是如果关闭了流同步，就不要再使用scanf,getchar,gets等属于C的东西，否则可能会出现奇怪的现象。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《其他》 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【1】银河英雄传说</title>
       <link href="/2022/01/15/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/"/>
       <url>/2022/01/15/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/</url>
@@ -514,11 +566,11 @@
     
     
     <entry>
-      <title>CP Editor写个CodeForce也变炫酷喽!</title>
-      <link href="/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/CP%20Editor%E6%8E%A8%E8%8D%90/"/>
-      <url>/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/CP%20Editor%E6%8E%A8%E8%8D%90/</url>
+      <title>写Markdown用Typora！</title>
+      <link href="/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Typora%E6%8E%A8%E8%8D%90/"/>
+      <url>/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Typora%E6%8E%A8%E8%8D%90/</url>
       
-        <content type="html"><![CDATA[<p>安装地址:<a href="https://cpeditor.org/download/">Download CP Editor | CP Editor</a></p><p>最近在CF做题，发现学姐交的一个题上有小广告^^，然后发现了这个宝藏IDE，确实在CF上做题用这个IDE很不错！！</p><p>在这里放一个B站UP主的完整配置过程：</p><p><a href="https://www.bilibili.com/video/BV1mX4y1V7S8">简单的 CP Editor 使用教程！_bilibili</a> ，UP主已经讲的很详细了，这个可能需要配置一下，不是下载以后直接用。</p><p>配合插件competitive companion食用更佳!!这个插件在CF页面点一下就可以把样例自动复制到CP Editor上面并且打开一个新的页并定位好题在CF上的位置。</p><p>讲一下完整过程：</p><ol><li>安装</li><li>需要再PATH里配置C++,MinGW,(我安装的里面没有带？)<a href="https://sourceforge.net/projects/mingw-w64/">MinGW-w64 - for 32 and 64 bit Windows download | SourceForge.net</a>，没有的话下载这个，然后放在CP Editor的目录里</li><li>在环境变量 PATH 里面加入 CP Editor目录里的 MinGW 里的 bin</li><li><a href="https://github.com/xalanq/cf-tool/releases/tag/v1.0.0">Release v1.0.0 Release! · xalanq/cf-tool · GitHub</a> ，这个是CF插件视频里会提到。</li><li><a href="https://chrome.google.com/webstore/detail/competitive-companion/cjnmckjndlpiamhfimnnjmnckgghkjbl/related?hl=zh-CN">Competitive Companion - Chrome 网上应用店 (google.com)</a> ，这个是网页插件，需要魔法，也可以在网上找一找。</li></ol><p>写CF用这个感觉针不戳！</p><p><img src="https://i.loli.net/2021/11/02/UYrbt4Qk9IoeCZ5.png" alt="CP Editor示意图.png"></p><p>当然也不尬吹，用这个debug感觉不太妙啊……</p>]]></content>
+        <content type="html"><![CDATA[<p><img src="https://i.loli.net/2021/11/02/HibmgOWQ7wCpBxz.png" alt="s"></p><p>安装地址:<a href="https://www.typora.io/#windows">Typora — a markdown editor, markdown reader.</a></p><p>Typora我觉得是一款不错的Markdown阅读器、编辑器(实际上我也只用这个嘿嘿)。</p><p>安装没啥难度，下载安装就好了，无需配置，进去就可以用了。</p><p>如果不会写Markdown，可以简单的学一下语法<br><a href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟教程Markdown</a></p><p>用这个记笔记也是一个不错的选择！！</p><p><img src="https://i.loli.net/2021/11/02/HUPV4Keg9xhNwqD.png" alt="Typora示意图.png"></p>]]></content>
       
       
       <categories>
@@ -539,11 +591,11 @@
     
     
     <entry>
-      <title>写Markdown用Typora！</title>
-      <link href="/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Typora%E6%8E%A8%E8%8D%90/"/>
-      <url>/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Typora%E6%8E%A8%E8%8D%90/</url>
+      <title>CP Editor写个CodeForce也变炫酷喽!</title>
+      <link href="/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/CP%20Editor%E6%8E%A8%E8%8D%90/"/>
+      <url>/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/CP%20Editor%E6%8E%A8%E8%8D%90/</url>
       
-        <content type="html"><![CDATA[<p><img src="https://i.loli.net/2021/11/02/HibmgOWQ7wCpBxz.png" alt="s"></p><p>安装地址:<a href="https://www.typora.io/#windows">Typora — a markdown editor, markdown reader.</a></p><p>Typora我觉得是一款不错的Markdown阅读器、编辑器(实际上我也只用这个嘿嘿)。</p><p>安装没啥难度，下载安装就好了，无需配置，进去就可以用了。</p><p>如果不会写Markdown，可以简单的学一下语法<br><a href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟教程Markdown</a></p><p>用这个记笔记也是一个不错的选择！！</p><p><img src="https://i.loli.net/2021/11/02/HUPV4Keg9xhNwqD.png" alt="Typora示意图.png"></p>]]></content>
+        <content type="html"><![CDATA[<p>安装地址:<a href="https://cpeditor.org/download/">Download CP Editor | CP Editor</a></p><p>最近在CF做题，发现学姐交的一个题上有小广告^^，然后发现了这个宝藏IDE，确实在CF上做题用这个IDE很不错！！</p><p>在这里放一个B站UP主的完整配置过程：</p><p><a href="https://www.bilibili.com/video/BV1mX4y1V7S8">简单的 CP Editor 使用教程！_bilibili</a> ，UP主已经讲的很详细了，这个可能需要配置一下，不是下载以后直接用。</p><p>配合插件competitive companion食用更佳!!这个插件在CF页面点一下就可以把样例自动复制到CP Editor上面并且打开一个新的页并定位好题在CF上的位置。</p><p>讲一下完整过程：</p><ol><li>安装</li><li>需要再PATH里配置C++,MinGW,(我安装的里面没有带？)<a href="https://sourceforge.net/projects/mingw-w64/">MinGW-w64 - for 32 and 64 bit Windows download | SourceForge.net</a>，没有的话下载这个，然后放在CP Editor的目录里</li><li>在环境变量 PATH 里面加入 CP Editor目录里的 MinGW 里的 bin</li><li><a href="https://github.com/xalanq/cf-tool/releases/tag/v1.0.0">Release v1.0.0 Release! · xalanq/cf-tool · GitHub</a> ，这个是CF插件视频里会提到。</li><li><a href="https://chrome.google.com/webstore/detail/competitive-companion/cjnmckjndlpiamhfimnnjmnckgghkjbl/related?hl=zh-CN">Competitive Companion - Chrome 网上应用店 (google.com)</a> ，这个是网页插件，需要魔法，也可以在网上找一找。</li></ol><p>写CF用这个感觉针不戳！</p><p><img src="https://i.loli.net/2021/11/02/UYrbt4Qk9IoeCZ5.png" alt="CP Editor示意图.png"></p><p>当然也不尬吹，用这个debug感觉不太妙啊……</p>]]></content>
       
       
       <categories>
