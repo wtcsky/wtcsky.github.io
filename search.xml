@@ -4,6 +4,60 @@
   
     
     <entry>
+      <title>【2】丑数(优先队列)</title>
+      <link href="/2022/01/19/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E3%80%902%E3%80%91%E4%B8%91%E6%95%B0/"/>
+      <url>/2022/01/19/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E3%80%902%E3%80%91%E4%B8%91%E6%95%B0/</url>
+      
+        <content type="html"><![CDATA[<h1 id="丑数"><a href="#丑数" class="headerlink" title="丑数"></a>丑数</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>丑数是指素因子都在集合｛2，3，5，7｝内的整数，第一个丑数是1。</p><h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>输入n</p><h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>输出第n大的丑数。</p><h2 id="Samples"><a href="#Samples" class="headerlink" title="Samples"></a>Samples</h2><p>Input</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure><p>Output</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">1</span><br></pre></td></tr></table></figure><h2 id="AC-CODE："><a href="#AC-CODE：" class="headerlink" title="AC CODE："></a>AC CODE：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span>+<span class="number">7</span>; </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">4e5</span> + <span class="number">10</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span> ;</span><br><span class="line">priority_queue&lt;ll ,vector&lt;ll&gt;,greater&lt;ll&gt; &gt; q; </span><br><span class="line">ll f[<span class="number">4</span>]=&#123;<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>&#125;;</span><br><span class="line">unordered_set&lt;ll&gt; st;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">st.<span class="built_in">insert</span>(<span class="number">1</span>),q.<span class="built_in">push</span>(<span class="number">1</span>);</span><br><span class="line">ll n,res;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">res = q.<span class="built_in">top</span>();q.<span class="built_in">pop</span>();</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;<span class="number">4</span>;j++) &#123;</span><br><span class="line">ll t = res * f[j];</span><br><span class="line"><span class="keyword">if</span>(!st.<span class="built_in">count</span>(t)) &#123;</span><br><span class="line">st.<span class="built_in">insert</span>(t);</span><br><span class="line">q.<span class="built_in">push</span>(t);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">cout&lt;&lt;res&lt;&lt;endl;</span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h2><p>很有意思的问题，知道了第一个丑数是1，每次把队首的元素输出就是第n大的丑数，那么如何保证队列里都是丑数，只需要把最小丑数 乘2，乘3，乘5，乘7 得到的数放进优先队列即可！</p><p>这样可以保证第n次输出的是第n大的丑数，并且不会错过任何一个，因为在队列里的数所能产生最小的数就是 队首元素 乘 2得到的数。</p><p>所以就能得到答案，这里为了防止重复的元素入队列，用到了unordered_set，因为unordered底层是哈希，他的增删查改都是O(1),因为不需要set排序，所以用这个是比较合适的！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《练习题》 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 优先队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【3】有序表的最小和(优先队列)</title>
+      <link href="/2022/01/19/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E3%80%903%E3%80%91%E6%9C%89%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%9C%80%E5%B0%8F%E5%92%8C/"/>
+      <url>/2022/01/19/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E3%80%903%E3%80%91%E6%9C%89%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%9C%80%E5%B0%8F%E5%92%8C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="有序表的最小和"><a href="#有序表的最小和" class="headerlink" title="有序表的最小和"></a>有序表的最小和</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给出两个长度为n的有序表A和B，在A和B中各任取一个元素，可以得到n^2个和，求这些和中最小的n个</p><h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>第一行包含一个整数n（n≤400000n≤400000）</p><p>第二行与第三行分别有n个整数，分别代表有序表A和B，整数之间由一个空格隔开，大小在长整数范围之内，保证有序表的数据单调递增。</p><h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>输出共n行，每行一个整数，第i行为第i小的和，数据保证在长整数范围之内</p><h2 id="Samples"><a href="#Samples" class="headerlink" title="Samples"></a>Samples</h2><p>Input</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 2 5</span><br><span class="line">2 4 7</span><br></pre></td></tr></table></figure><p>Output</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure><h2 id="AC-CODE："><a href="#AC-CODE：" class="headerlink" title="AC CODE："></a>AC CODE：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span>+<span class="number">7</span>; </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">4e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> a[N],b[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> i,j;</span><br><span class="line"><span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt; (node a,node b) &#123;</span><br><span class="line"><span class="keyword">return</span> a.w &gt; b.w;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue&lt;node&gt; q;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> n,x,y;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;b[i]);</span><br><span class="line">q.<span class="built_in">push</span>(&#123;a[i]+b[<span class="number">1</span>],i,<span class="number">1</span>&#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">node tmp = q.<span class="built_in">top</span>();q.<span class="built_in">pop</span>();</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,tmp.w);</span><br><span class="line">x = tmp.i,y = tmp.j;</span><br><span class="line">tmp.w = a[x]+b[y+<span class="number">1</span>];</span><br><span class="line">tmp.j++; </span><br><span class="line">q.<span class="built_in">push</span>(tmp);</span><br><span class="line">&#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h2><p>同样是很有趣的一道题。</p><p>假设有a,b两个数组，首先我们知道最小的和必然是a[1] + b[1]</p><p>那么第二小的是什么呢？</p><p>可能是a[1] + b[2] 也可能是 a[2] + b[1] 做成表格是这样的:</p><p><img src="https://s2.loli.net/2022/01/19/26BPc1FGKgfDxAI.png" alt="有序表的最小和.png"></p><p>假设每个数组有四项，第一小的就要从第一列找到最小的一个输出，然后被选中的向后推移一项继续比较每一行被选中的。</p><p>最小的只能从这n个中产生。</p><p>模拟一下过程就是code中那样。</p><p>值得一提的是优先队列制定排序的规则，这里用的是在结构体中重载运算符，之后会专门做一篇博客解释这个。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《练习题》 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 优先队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>最短路问题</title>
       <link href="/2022/01/17/%E3%80%8A%E5%85%B3%E4%BA%8E%E7%AE%97%E6%B3%95%E3%80%8B/%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98/"/>
       <url>/2022/01/17/%E3%80%8A%E5%85%B3%E4%BA%8E%E7%AE%97%E6%B3%95%E3%80%8B/%E6%9C%80%E7%9F%AD%E8%B7%AF%E9%97%AE%E9%A2%98/</url>
@@ -81,9 +135,9 @@
     
     
     <entry>
-      <title>【1】银河英雄传说</title>
-      <link href="/2022/01/15/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/"/>
-      <url>/2022/01/15/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/</url>
+      <title>【1】银河英雄传说(带权并查集)</title>
+      <link href="/2022/01/15/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E3%80%901%E3%80%91%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/"/>
+      <url>/2022/01/15/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E3%80%901%E3%80%91%E9%93%B6%E6%B2%B3%E8%8B%B1%E9%9B%84%E4%BC%A0%E8%AF%B4/</url>
       
         <content type="html"><![CDATA[<h1 id="银河英雄传说"><a href="#银河英雄传说" class="headerlink" title="银河英雄传说"></a>银河英雄传说</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>公元五八O一年，地球居民迁移至金牛座α第二行星，在那里发表银河联邦创立宣言，同年改元为宇宙历元年，并开始向银河系深处拓展。<br>宇宙历七九九年，银河系的两大军事集团在巴米利恩星域爆发战争。泰山压顶集团派宇宙舰队司令莱因哈特率领十万余艘战舰出征，气吞山河集团点名将杨威利组织麾下三万艘战舰迎敌。<br>杨威利擅长排兵布阵，巧妙运用各种战术屡次以少胜多，难免恣生骄气。在这次决战中，他将巴米利恩星域战场划分成30000列，每列依次编号为1, 2, …, 30000。之后，他把自己的战舰也依次编号为1, 2, …, 30000，让第ii号战舰处于第ii列(i=1,2,…,30000i=1,2,…,30000)，形成“一字长蛇阵”，诱敌深入。这是初始阵形。当进犯之敌到达时，杨威利会多次发布合并指令，将大部分战舰集中在某几列上，实施密集攻击。合并指令为MM ii jj，含义为让第ii号战舰所在的整个战舰队列，作为一个整体（头在前尾在后）接至第jj号战舰所在的战舰队列的尾部。显然战舰队列是由处于同一列的一个或多个战舰组成的。合并指令的执行结果会使队列增大。<br>然而，老谋深算的莱因哈特早已在战略上取得了主动。在交战中，他可以通过庞大的情报网络随时监听杨威利的舰队调动指令。<br>在杨威利发布指令调动舰队的同时，莱因哈特为了及时了解当前杨威利的战舰分布情况，也会发出一些询问指令：CC ii jj。该指令意思是，询问电脑，杨威利的第ii号战舰与第jj号战舰当前是否在同一列中，如果在同一列中，那么它们之间布置有多少战舰。<br>作为一个资深的高级程序设计员，你被要求编写程序分析杨威利的指令，以及回答莱因哈特的询问。<br>最终的决战已经展开，银河的历史又翻过了一页…… </p><h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>第一行有一个整数TT（1≤T≤500,0001≤T≤500,000），表示总共有TT条指令。<br>以下有TT行，每行有一条指令。指令有两种格式： </p><ol><li>MM ii jj ：ii和jj是两个整数（1≤i,j≤300001≤i,j≤30000），表示指令涉及的战舰编号。该指令是莱因哈特窃听到的杨威利发布的舰队调动指令，并且保证第ii号战舰与第jj号战舰不在同一列。 </li><li>CC ii jj ：ii和jj是两个整数（1≤i,j≤300001≤i,j≤30000），表示指令涉及的战舰编号。该指令是莱因哈特发布的询问指令。</li></ol><h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>你的程序应当依次对输入的每一条指令进行分析和处理：<br>如果是杨威利发布的舰队调动指令，则表示舰队排列发生了变化，你的程序要注意到这一点，但是不要输出任何信息；<br>如果是莱因哈特发布的询问指令，你的程序要输出一行，仅包含一个整数，表示在同一列上，第i号战舰与第j号战舰之间布置的战舰数目。如果第i号战舰与第j号战舰当前不在同一列上，则输出-1。</p><h2 id="Samples"><a href="#Samples" class="headerlink" title="Samples"></a>Samples</h2><p>Input</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">4</span><br><span class="line">M 2 3</span><br><span class="line">C 1 2</span><br><span class="line">M 2 4</span><br><span class="line">C 4 2</span><br></pre></td></tr></table></figure><p>Output</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">-1</span><br><span class="line">1</span><br></pre></td></tr></table></figure><h2 id="AC-CODE："><a href="#AC-CODE：" class="headerlink" title="AC CODE："></a>AC CODE：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e6</span>+<span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span>+<span class="number">7</span>; </span><br><span class="line"><span class="keyword">int</span> f[N],deep[N],size[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(f[x] == x)<span class="keyword">return</span> x;</span><br><span class="line"><span class="keyword">int</span> df = <span class="built_in">find</span>(f[x]);</span><br><span class="line">deep[x] += deep[f[x]];</span><br><span class="line"><span class="keyword">return</span> f[x] = df;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">combine</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> dx = <span class="built_in">find</span>(x);</span><br><span class="line"><span class="keyword">int</span> dy = <span class="built_in">find</span>(y);</span><br><span class="line">f[dx] = dy;</span><br><span class="line">deep[dx] = size[dy];</span><br><span class="line">size[dy] += size[dx];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">find</span>(x) == <span class="built_in">find</span>(y))</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>,<span class="built_in">abs</span>(deep[x]-deep[y])<span class="number">-1</span>));</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;-1&quot;</span>);</span><br><span class="line"><span class="built_in">putchar</span>(<span class="string">&#x27;\n&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">30000</span>;i++)</span><br><span class="line">f[i]=i,deep[i]=<span class="number">0</span>,size[i]=<span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line"><span class="built_in">init</span>();</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="keyword">char</span> q;</span><br><span class="line"><span class="keyword">int</span> x,y;</span><br><span class="line">cin&gt;&gt;q&gt;&gt;x&gt;&gt;y;</span><br><span class="line"><span class="keyword">if</span>(q==<span class="string">&#x27;M&#x27;</span>)</span><br><span class="line"><span class="built_in">combine</span>(x,y);</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line"><span class="built_in">solve</span>(x,y);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
       
@@ -110,31 +164,6 @@
     
     
     <entry>
-      <title>Python与Java的安装和配置</title>
-      <link href="/2022/01/13/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Python%E4%B8%8EJava%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/"/>
-      <url>/2022/01/13/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Python%E4%B8%8EJava%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><h2 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h2><p><a href="https://www.python.org/downloads/">Download Python | Python.org</a>直接在官网下载即可</p><h2 id="配置："><a href="#配置：" class="headerlink" title="配置："></a>配置：</h2><p>Python的配置比较简单，只要在打开安装包的时候选中 Add Python 3.10 to PATH 就可以自动帮你添加环境变量了。</p><p>参考博客:<a href="https://blog.csdn.net/Como0413/article/details/106636705?ops_request_misc=%7B%22request_id%22:%22164204537216780271966979%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=164204537216780271966979&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-106636705.first_rank_v2_pc_rank_v29&utm_term=python%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187">python安装与配置步骤</a></p><h1 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h1><h2 id="安装：-1"><a href="#安装：-1" class="headerlink" title="安装："></a>安装：</h2><p><a href="https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe">Java安装包</a></p><h2 id="配置：-1"><a href="#配置：-1" class="headerlink" title="配置："></a>配置：</h2><p>找到jdk文件的位置。</p><p>打开我的电脑(此电脑)的界面，然后右键属性，高级系统设置(也可以直接用windows自带的搜索功能搜索高级系统设置)，打开环境变量。</p><p>在下面的系统变量中添加</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">变量名:JAVA_HOME</span><br><span class="line">变量值：(文件地址，默认为C:\Program Files\Java\jdk-17.0.1)</span><br></pre></td></tr></table></figure><p>再添加一个(全部复制！不要忽略点.！！！)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">变量名:CLASSPATH</span><br><span class="line">变量值:.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</span><br></pre></td></tr></table></figure><p>在系统变量的列表中找到PATH这一项，点击编辑，新建两个变量</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\bin</span><br><span class="line">%JAVA_HOME%\jre\bin</span><br></pre></td></tr></table></figure><p>点击确定，再点击确定！</p><p>只要WIN + R 输入CMD然后 输入java 和 javac都可以出来一大坨东西而不是无法识别java就可以了！！</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 《实用软件/工具》 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Tool </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>闲谈-2 正在放寒假</title>
       <link href="/2022/01/13/%E3%80%8A%E9%97%B2%E8%B0%88%E5%BD%95%E3%80%8B/%E9%97%B2%E8%B0%88-2/"/>
       <url>/2022/01/13/%E3%80%8A%E9%97%B2%E8%B0%88%E5%BD%95%E3%80%8B/%E9%97%B2%E8%B0%88-2/</url>
@@ -152,6 +181,31 @@
         <tags>
             
             <tag> 闲谈 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Python与Java的安装和配置</title>
+      <link href="/2022/01/13/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Python%E4%B8%8EJava%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/"/>
+      <url>/2022/01/13/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Python%E4%B8%8EJava%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Python"><a href="#Python" class="headerlink" title="Python"></a>Python</h1><h2 id="安装："><a href="#安装：" class="headerlink" title="安装："></a>安装：</h2><p><a href="https://www.python.org/downloads/">Download Python | Python.org</a>直接在官网下载即可</p><h2 id="配置："><a href="#配置：" class="headerlink" title="配置："></a>配置：</h2><p>Python的配置比较简单，只要在打开安装包的时候选中 Add Python 3.10 to PATH 就可以自动帮你添加环境变量了。</p><p>参考博客:<a href="https://blog.csdn.net/Como0413/article/details/106636705?ops_request_misc=%7B%22request_id%22:%22164204537216780271966979%22,%22scm%22:%2220140713.130102334..%22%7D&request_id=164204537216780271966979&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~top_click~default-1-106636705.first_rank_v2_pc_rank_v29&utm_term=python%E9%85%8D%E7%BD%AE&spm=1018.2226.3001.4187">python安装与配置步骤</a></p><h1 id="JAVA"><a href="#JAVA" class="headerlink" title="JAVA"></a>JAVA</h1><h2 id="安装：-1"><a href="#安装：-1" class="headerlink" title="安装："></a>安装：</h2><p><a href="https://download.oracle.com/java/17/latest/jdk-17_windows-x64_bin.exe">Java安装包</a></p><h2 id="配置：-1"><a href="#配置：-1" class="headerlink" title="配置："></a>配置：</h2><p>找到jdk文件的位置。</p><p>打开我的电脑(此电脑)的界面，然后右键属性，高级系统设置(也可以直接用windows自带的搜索功能搜索高级系统设置)，打开环境变量。</p><p>在下面的系统变量中添加</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">变量名:JAVA_HOME</span><br><span class="line">变量值：(文件地址，默认为C:\Program Files\Java\jdk-17.0.1)</span><br></pre></td></tr></table></figure><p>再添加一个(全部复制！不要忽略点.！！！)</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">变量名:CLASSPATH</span><br><span class="line">变量值:.;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</span><br></pre></td></tr></table></figure><p>在系统变量的列表中找到PATH这一项，点击编辑，新建两个变量</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%JAVA_HOME%\bin</span><br><span class="line">%JAVA_HOME%\jre\bin</span><br></pre></td></tr></table></figure><p>点击确定，再点击确定！</p><p>只要WIN + R 输入CMD然后 输入java 和 javac都可以出来一大坨东西而不是无法识别java就可以了！！</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《实用软件/工具》 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Tool </tag>
             
         </tags>
       
@@ -591,11 +645,11 @@
     
     
     <entry>
-      <title>CP Editor写个CodeForce也变炫酷喽!</title>
-      <link href="/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/CP%20Editor%E6%8E%A8%E8%8D%90/"/>
-      <url>/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/CP%20Editor%E6%8E%A8%E8%8D%90/</url>
+      <title>写Markdown用Typora！</title>
+      <link href="/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Typora%E6%8E%A8%E8%8D%90/"/>
+      <url>/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Typora%E6%8E%A8%E8%8D%90/</url>
       
-        <content type="html"><![CDATA[<p>安装地址:<a href="https://cpeditor.org/download/">Download CP Editor | CP Editor</a></p><p>最近在CF做题，发现学姐交的一个题上有小广告^^，然后发现了这个宝藏IDE，确实在CF上做题用这个IDE很不错！！</p><p>在这里放一个B站UP主的完整配置过程：</p><p><a href="https://www.bilibili.com/video/BV1mX4y1V7S8">简单的 CP Editor 使用教程！_bilibili</a> ，UP主已经讲的很详细了，这个可能需要配置一下，不是下载以后直接用。</p><p>配合插件competitive companion食用更佳!!这个插件在CF页面点一下就可以把样例自动复制到CP Editor上面并且打开一个新的页并定位好题在CF上的位置。</p><p>讲一下完整过程：</p><ol><li>安装</li><li>需要再PATH里配置C++,MinGW,(我安装的里面没有带？)<a href="https://sourceforge.net/projects/mingw-w64/">MinGW-w64 - for 32 and 64 bit Windows download | SourceForge.net</a>，没有的话下载这个，然后放在CP Editor的目录里</li><li>在环境变量 PATH 里面加入 CP Editor目录里的 MinGW 里的 bin</li><li><a href="https://github.com/xalanq/cf-tool/releases/tag/v1.0.0">Release v1.0.0 Release! · xalanq/cf-tool · GitHub</a> ，这个是CF插件视频里会提到。</li><li><a href="https://chrome.google.com/webstore/detail/competitive-companion/cjnmckjndlpiamhfimnnjmnckgghkjbl/related?hl=zh-CN">Competitive Companion - Chrome 网上应用店 (google.com)</a> ，这个是网页插件，需要魔法，也可以在网上找一找。</li></ol><p>写CF用这个感觉针不戳！</p><p><img src="https://i.loli.net/2021/11/02/UYrbt4Qk9IoeCZ5.png" alt="CP Editor示意图.png"></p><p>当然也不尬吹，用这个debug感觉不太妙啊……</p>]]></content>
+        <content type="html"><![CDATA[<p><img src="https://i.loli.net/2021/11/02/HibmgOWQ7wCpBxz.png" alt="s"></p><p>安装地址:<a href="https://www.typora.io/#windows">Typora — a markdown editor, markdown reader.</a></p><p>Typora我觉得是一款不错的Markdown阅读器、编辑器(实际上我也只用这个嘿嘿)。</p><p>安装没啥难度，下载安装就好了，无需配置，进去就可以用了。</p><p>如果不会写Markdown，可以简单的学一下语法<br><a href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟教程Markdown</a></p><p>用这个记笔记也是一个不错的选择！！</p><p><img src="https://i.loli.net/2021/11/02/HUPV4Keg9xhNwqD.png" alt="Typora示意图.png"></p>]]></content>
       
       
       <categories>
@@ -616,11 +670,11 @@
     
     
     <entry>
-      <title>写Markdown用Typora！</title>
-      <link href="/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Typora%E6%8E%A8%E8%8D%90/"/>
-      <url>/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Typora%E6%8E%A8%E8%8D%90/</url>
+      <title>CP Editor写个CodeForce也变炫酷喽!</title>
+      <link href="/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/CP%20Editor%E6%8E%A8%E8%8D%90/"/>
+      <url>/2021/11/02/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/CP%20Editor%E6%8E%A8%E8%8D%90/</url>
       
-        <content type="html"><![CDATA[<p><img src="https://i.loli.net/2021/11/02/HibmgOWQ7wCpBxz.png" alt="s"></p><p>安装地址:<a href="https://www.typora.io/#windows">Typora — a markdown editor, markdown reader.</a></p><p>Typora我觉得是一款不错的Markdown阅读器、编辑器(实际上我也只用这个嘿嘿)。</p><p>安装没啥难度，下载安装就好了，无需配置，进去就可以用了。</p><p>如果不会写Markdown，可以简单的学一下语法<br><a href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟教程Markdown</a></p><p>用这个记笔记也是一个不错的选择！！</p><p><img src="https://i.loli.net/2021/11/02/HUPV4Keg9xhNwqD.png" alt="Typora示意图.png"></p>]]></content>
+        <content type="html"><![CDATA[<p>安装地址:<a href="https://cpeditor.org/download/">Download CP Editor | CP Editor</a></p><p>最近在CF做题，发现学姐交的一个题上有小广告^^，然后发现了这个宝藏IDE，确实在CF上做题用这个IDE很不错！！</p><p>在这里放一个B站UP主的完整配置过程：</p><p><a href="https://www.bilibili.com/video/BV1mX4y1V7S8">简单的 CP Editor 使用教程！_bilibili</a> ，UP主已经讲的很详细了，这个可能需要配置一下，不是下载以后直接用。</p><p>配合插件competitive companion食用更佳!!这个插件在CF页面点一下就可以把样例自动复制到CP Editor上面并且打开一个新的页并定位好题在CF上的位置。</p><p>讲一下完整过程：</p><ol><li>安装</li><li>需要再PATH里配置C++,MinGW,(我安装的里面没有带？)<a href="https://sourceforge.net/projects/mingw-w64/">MinGW-w64 - for 32 and 64 bit Windows download | SourceForge.net</a>，没有的话下载这个，然后放在CP Editor的目录里</li><li>在环境变量 PATH 里面加入 CP Editor目录里的 MinGW 里的 bin</li><li><a href="https://github.com/xalanq/cf-tool/releases/tag/v1.0.0">Release v1.0.0 Release! · xalanq/cf-tool · GitHub</a> ，这个是CF插件视频里会提到。</li><li><a href="https://chrome.google.com/webstore/detail/competitive-companion/cjnmckjndlpiamhfimnnjmnckgghkjbl/related?hl=zh-CN">Competitive Companion - Chrome 网上应用店 (google.com)</a> ，这个是网页插件，需要魔法，也可以在网上找一找。</li></ol><p>写CF用这个感觉针不戳！</p><p><img src="https://i.loli.net/2021/11/02/UYrbt4Qk9IoeCZ5.png" alt="CP Editor示意图.png"></p><p>当然也不尬吹，用这个debug感觉不太妙啊……</p>]]></content>
       
       
       <categories>
@@ -716,44 +770,6 @@
     
     
     <entry>
-      <title>CodeForce刷题表</title>
-      <link href="/2021/10/27/%E3%80%8ACodeForce%E5%88%B7%E9%A2%98%E5%BD%95%E3%80%8B/CodeForce%E8%A1%A8/"/>
-      <url>/2021/10/27/%E3%80%8ACodeForce%E5%88%B7%E9%A2%98%E5%BD%95%E3%80%8B/CodeForce%E8%A1%A8/</url>
-      
-        <content type="html"><![CDATA[<h1 id="CodeForce刷题表"><a href="#CodeForce刷题表" class="headerlink" title="CodeForce刷题表"></a>CodeForce刷题表</h1><table><thead><tr><th align="center">编号</th><th align="center">题目名称</th><th align="center">Date</th><th align="center">Day</th></tr></thead><tbody><tr><td align="center">1</td><td align="center"><a href="https://codeforces.com/problemset/problem/1598/C">1598C - Delete Two Elements</a></td><td align="center">2021/10/27</td><td align="center">1</td></tr><tr><td align="center">2</td><td align="center"><a href="https://codeforces.com/problemset/problem/492/B">492B - Vanya and Lanterns</a></td><td align="center">2021/10/27</td><td align="center">1</td></tr><tr><td align="center">3</td><td align="center"><a href="https://codeforces.com/problemset/problem/466/A">466A - Cheap Travel</a></td><td align="center">2021/10/27</td><td align="center">1</td></tr><tr><td align="center">4</td><td align="center"><a href="https://codeforces.com/contest/1602/problem/B">1602B - Divine Array</a></td><td align="center">2021/10/28</td><td align="center">2</td></tr><tr><td align="center">5</td><td align="center"><a href="https://codeforces.com/problemset/problem/1601/A">1601A - Array Elimination</a></td><td align="center">2021/10/28</td><td align="center">2</td></tr><tr><td align="center">6</td><td align="center"><a href="https://codeforces.com/problemset/problem/1598/B">1598B - Groups</a></td><td align="center">2021/10/28</td><td align="center">2</td></tr><tr><td align="center">7</td><td align="center"><a href="https://codeforces.com/problemset/problem/1606/C">1606C - Banknotes</a></td><td align="center">2021/11/1</td><td align="center">3</td></tr><tr><td align="center">8</td><td align="center"><a href="https://codeforces.com/problemset/problem/1606/B">1606B - Update Files</a></td><td align="center">2021/11/1</td><td align="center">3</td></tr><tr><td align="center">9</td><td align="center"><a href="https://codeforces.com/problemset/problem/1604/B">1604B - XOR Specia-LIS-t</a></td><td align="center">2021/11/2</td><td align="center">4</td></tr><tr><td align="center">10</td><td align="center"><a href="https://codeforces.com/problemset/problem/1604/C">1604C - Di-visible Confusion</a></td><td align="center">2021/11/2</td><td align="center">4</td></tr><tr><td align="center">11</td><td align="center"><a href="https://codeforces.com/problemset/problem/1604/D">1604D - Moderate Modular Mode</a></td><td align="center">2021/11/2</td><td align="center">4</td></tr><tr><td align="center">12</td><td align="center"><a href="https://codeforces.com/problemset/problem/1607/D">1607D - Blue-Red Permutation</a></td><td align="center">2021/11/3</td><td align="center">5</td></tr><tr><td align="center">13</td><td align="center"><a href="https://codeforces.com/problemset/problem/1607/E">1607E - Robot on the Board 1</a></td><td align="center">2021/11/3</td><td align="center">5</td></tr><tr><td align="center">14</td><td align="center"><a href="https://codeforces.com/problemset/problem/1607/C">1607C - Minimum Extraction</a></td><td align="center">2021/11/4</td><td align="center">6</td></tr><tr><td align="center">15</td><td align="center"><a href="https://codeforces.com/problemset/problem/1593/D1">1593D1 - All are Same</a></td><td align="center">2021/11/4</td><td align="center">6</td></tr><tr><td align="center">16</td><td align="center"><a href="https://codeforces.com/problemset/problem/1598/B">1594B - Special Numbers</a></td><td align="center">2021/11/5</td><td align="center">7</td></tr><tr><td align="center">17</td><td align="center"><a href="https://codeforces.com/problemset/problem/1598/C">1594C - Make Them Equal</a></td><td align="center">2021/11/5</td><td align="center">7</td></tr><tr><td align="center">18</td><td align="center"><a href="https://codeforces.com/problemset/problem/1607/B">1607B - Odd Grasshopper</a></td><td align="center">2021/11/8</td><td align="center">8</td></tr><tr><td align="center">19</td><td align="center"><a href="https://codeforces.com/problemset/problem/1607/A">1607A - Linear Keyboard</a></td><td align="center">2021/11/8</td><td align="center">8</td></tr><tr><td align="center">20</td><td align="center"><a href="https://codeforces.com/problemset/problem/1606/A">1606A - AB Balance</a></td><td align="center">2021/11/8</td><td align="center">8</td></tr><tr><td align="center">21</td><td align="center"><a href="https://codeforces.com/problemset/problem/1604/A">1604A - Era</a></td><td align="center">2021/11/8</td><td align="center">8</td></tr><tr><td align="center">22</td><td align="center"><a href="https://codeforces.com/problemset/problem/1594/D">1594D - The Number of Imposters</a></td><td align="center">2021//11/10</td><td align="center">9</td></tr><tr><td align="center">23</td><td align="center"><a href="https://codeforces.com/problemset/problem/1605/A">1605A - A.M. Deviation</a></td><td align="center">2021/11/15</td><td align="center">10</td></tr><tr><td align="center">24</td><td align="center"><a href="https://codeforces.com/problemset/problem/1605/B">1605B - Reverse Sort</a></td><td align="center">2021/11/15</td><td align="center">10</td></tr><tr><td align="center">25</td><td align="center"><a href="https://codeforces.com/problemset/problem/1605/C">1605C - Dominant Character</a></td><td align="center">2021/11/16</td><td align="center">11</td></tr><tr><td align="center">26</td><td align="center"><a href="https://codeforces.com/problemset/problem/1582/A">1582A - Luntik and Concerts</a></td><td align="center">2021/11/23</td><td align="center">12</td></tr><tr><td align="center">27</td><td align="center"><a href="https://codeforces.com/problemset/problem/1582/B">1582B - Luntik and Subsequences</a></td><td align="center">2021/11/23</td><td align="center">12</td></tr><tr><td align="center">28</td><td align="center"><a href="https://codeforces.com/problemset/problem/1611/A">1611A - Make Even</a></td><td align="center">2021/11/28</td><td align="center">13</td></tr><tr><td align="center">29</td><td align="center"><a href="https://codeforces.com/problemset/problem/1611/B">1611B - Team Composition: Programmers and Mathematicians</a></td><td align="center">2021/11/28</td><td align="center">13</td></tr><tr><td align="center">30</td><td align="center"><a href="https://codeforces.com/problemset/problem/1611/C">1611C - Polycarp Recovers the Permutation</a></td><td align="center">2021/11/28</td><td align="center">13</td></tr><tr><td align="center">31</td><td align="center"><a href="https://codeforces.com/problemset/problem/1611/D">1611D - Weights Assignment For Tree Edges</a></td><td align="center">2021/11/28</td><td align="center">13</td></tr></tbody></table>]]></content>
-      
-      
-      <categories>
-          
-          <category> 《CodeForce刷题录》 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>博客维护总览</title>
-      <link href="/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-%E6%80%BB%E8%A1%A8/"/>
-      <url>/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-%E6%80%BB%E8%A1%A8/</url>
-      
-        <content type="html"><![CDATA[<h1 id="博客维护总览"><a href="#博客维护总览" class="headerlink" title="博客维护总览"></a>博客维护总览</h1><ul><li><input checked="" disabled="" type="checkbox"> 2021/10/27 修复了文章下面该文章链接显示错误的问题</li><li><input checked="" disabled="" type="checkbox"> 2021/11/8   添加了站内搜索功能</li></ul>]]></content>
-      
-      
-      <categories>
-          
-          <category> 《博客维护日志》 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>博客维护日志-1</title>
       <link href="/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-1/"/>
       <url>/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-1/</url>
@@ -779,6 +795,25 @@
     
     
     <entry>
+      <title>CodeForce刷题表</title>
+      <link href="/2021/10/27/%E3%80%8ACodeForce%E5%88%B7%E9%A2%98%E5%BD%95%E3%80%8B/CodeForce%E8%A1%A8/"/>
+      <url>/2021/10/27/%E3%80%8ACodeForce%E5%88%B7%E9%A2%98%E5%BD%95%E3%80%8B/CodeForce%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="CodeForce刷题表"><a href="#CodeForce刷题表" class="headerlink" title="CodeForce刷题表"></a>CodeForce刷题表</h1><table><thead><tr><th align="center">编号</th><th align="center">题目名称</th><th align="center">Date</th><th align="center">Day</th></tr></thead><tbody><tr><td align="center">1</td><td align="center"><a href="https://codeforces.com/problemset/problem/1598/C">1598C - Delete Two Elements</a></td><td align="center">2021/10/27</td><td align="center">1</td></tr><tr><td align="center">2</td><td align="center"><a href="https://codeforces.com/problemset/problem/492/B">492B - Vanya and Lanterns</a></td><td align="center">2021/10/27</td><td align="center">1</td></tr><tr><td align="center">3</td><td align="center"><a href="https://codeforces.com/problemset/problem/466/A">466A - Cheap Travel</a></td><td align="center">2021/10/27</td><td align="center">1</td></tr><tr><td align="center">4</td><td align="center"><a href="https://codeforces.com/contest/1602/problem/B">1602B - Divine Array</a></td><td align="center">2021/10/28</td><td align="center">2</td></tr><tr><td align="center">5</td><td align="center"><a href="https://codeforces.com/problemset/problem/1601/A">1601A - Array Elimination</a></td><td align="center">2021/10/28</td><td align="center">2</td></tr><tr><td align="center">6</td><td align="center"><a href="https://codeforces.com/problemset/problem/1598/B">1598B - Groups</a></td><td align="center">2021/10/28</td><td align="center">2</td></tr><tr><td align="center">7</td><td align="center"><a href="https://codeforces.com/problemset/problem/1606/C">1606C - Banknotes</a></td><td align="center">2021/11/1</td><td align="center">3</td></tr><tr><td align="center">8</td><td align="center"><a href="https://codeforces.com/problemset/problem/1606/B">1606B - Update Files</a></td><td align="center">2021/11/1</td><td align="center">3</td></tr><tr><td align="center">9</td><td align="center"><a href="https://codeforces.com/problemset/problem/1604/B">1604B - XOR Specia-LIS-t</a></td><td align="center">2021/11/2</td><td align="center">4</td></tr><tr><td align="center">10</td><td align="center"><a href="https://codeforces.com/problemset/problem/1604/C">1604C - Di-visible Confusion</a></td><td align="center">2021/11/2</td><td align="center">4</td></tr><tr><td align="center">11</td><td align="center"><a href="https://codeforces.com/problemset/problem/1604/D">1604D - Moderate Modular Mode</a></td><td align="center">2021/11/2</td><td align="center">4</td></tr><tr><td align="center">12</td><td align="center"><a href="https://codeforces.com/problemset/problem/1607/D">1607D - Blue-Red Permutation</a></td><td align="center">2021/11/3</td><td align="center">5</td></tr><tr><td align="center">13</td><td align="center"><a href="https://codeforces.com/problemset/problem/1607/E">1607E - Robot on the Board 1</a></td><td align="center">2021/11/3</td><td align="center">5</td></tr><tr><td align="center">14</td><td align="center"><a href="https://codeforces.com/problemset/problem/1607/C">1607C - Minimum Extraction</a></td><td align="center">2021/11/4</td><td align="center">6</td></tr><tr><td align="center">15</td><td align="center"><a href="https://codeforces.com/problemset/problem/1593/D1">1593D1 - All are Same</a></td><td align="center">2021/11/4</td><td align="center">6</td></tr><tr><td align="center">16</td><td align="center"><a href="https://codeforces.com/problemset/problem/1598/B">1594B - Special Numbers</a></td><td align="center">2021/11/5</td><td align="center">7</td></tr><tr><td align="center">17</td><td align="center"><a href="https://codeforces.com/problemset/problem/1598/C">1594C - Make Them Equal</a></td><td align="center">2021/11/5</td><td align="center">7</td></tr><tr><td align="center">18</td><td align="center"><a href="https://codeforces.com/problemset/problem/1607/B">1607B - Odd Grasshopper</a></td><td align="center">2021/11/8</td><td align="center">8</td></tr><tr><td align="center">19</td><td align="center"><a href="https://codeforces.com/problemset/problem/1607/A">1607A - Linear Keyboard</a></td><td align="center">2021/11/8</td><td align="center">8</td></tr><tr><td align="center">20</td><td align="center"><a href="https://codeforces.com/problemset/problem/1606/A">1606A - AB Balance</a></td><td align="center">2021/11/8</td><td align="center">8</td></tr><tr><td align="center">21</td><td align="center"><a href="https://codeforces.com/problemset/problem/1604/A">1604A - Era</a></td><td align="center">2021/11/8</td><td align="center">8</td></tr><tr><td align="center">22</td><td align="center"><a href="https://codeforces.com/problemset/problem/1594/D">1594D - The Number of Imposters</a></td><td align="center">2021//11/10</td><td align="center">9</td></tr><tr><td align="center">23</td><td align="center"><a href="https://codeforces.com/problemset/problem/1605/A">1605A - A.M. Deviation</a></td><td align="center">2021/11/15</td><td align="center">10</td></tr><tr><td align="center">24</td><td align="center"><a href="https://codeforces.com/problemset/problem/1605/B">1605B - Reverse Sort</a></td><td align="center">2021/11/15</td><td align="center">10</td></tr><tr><td align="center">25</td><td align="center"><a href="https://codeforces.com/problemset/problem/1605/C">1605C - Dominant Character</a></td><td align="center">2021/11/16</td><td align="center">11</td></tr><tr><td align="center">26</td><td align="center"><a href="https://codeforces.com/problemset/problem/1582/A">1582A - Luntik and Concerts</a></td><td align="center">2021/11/23</td><td align="center">12</td></tr><tr><td align="center">27</td><td align="center"><a href="https://codeforces.com/problemset/problem/1582/B">1582B - Luntik and Subsequences</a></td><td align="center">2021/11/23</td><td align="center">12</td></tr><tr><td align="center">28</td><td align="center"><a href="https://codeforces.com/problemset/problem/1611/A">1611A - Make Even</a></td><td align="center">2021/11/28</td><td align="center">13</td></tr><tr><td align="center">29</td><td align="center"><a href="https://codeforces.com/problemset/problem/1611/B">1611B - Team Composition: Programmers and Mathematicians</a></td><td align="center">2021/11/28</td><td align="center">13</td></tr><tr><td align="center">30</td><td align="center"><a href="https://codeforces.com/problemset/problem/1611/C">1611C - Polycarp Recovers the Permutation</a></td><td align="center">2021/11/28</td><td align="center">13</td></tr><tr><td align="center">31</td><td align="center"><a href="https://codeforces.com/problemset/problem/1611/D">1611D - Weights Assignment For Tree Edges</a></td><td align="center">2021/11/28</td><td align="center">13</td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《CodeForce刷题录》 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>博客搭建日志-2</title>
       <link href="/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97-2/"/>
       <url>/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97-2/</url>
@@ -789,6 +824,25 @@
       <categories>
           
           <category> 《博客搭建日志》 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>博客维护总览</title>
+      <link href="/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-%E6%80%BB%E8%A1%A8/"/>
+      <url>/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-%E6%80%BB%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="博客维护总览"><a href="#博客维护总览" class="headerlink" title="博客维护总览"></a>博客维护总览</h1><ul><li><input checked="" disabled="" type="checkbox"> 2021/10/27 修复了文章下面该文章链接显示错误的问题</li><li><input checked="" disabled="" type="checkbox"> 2021/11/8   添加了站内搜索功能</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《博客维护日志》 </category>
           
       </categories>
       
