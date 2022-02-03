@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Cheat Engine自带教程2</title>
+      <link href="/2022/02/04/%E3%80%8A%E5%85%B6%E4%BB%96%E3%80%8B/Cheat%20Engine%E8%87%AA%E5%B8%A6%E6%95%99%E7%A8%8B2/"/>
+      <url>/2022/02/04/%E3%80%8A%E5%85%B6%E4%BB%96%E3%80%8B/Cheat%20Engine%E8%87%AA%E5%B8%A6%E6%95%99%E7%A8%8B2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="第1关"><a href="#第1关" class="headerlink" title="第1关"></a>第1关</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>每五发子弹就会重新装弹，然后靶子就会恢复血量，找到方法打碎靶子</p><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><p>靶子的血量是个4字节的整形变量(自己测试出来的)，通过射击，血量减少找到靶子血量，改为1，然后射击一次就可以通关。</p><h1 id="第2关"><a href="#第2关" class="headerlink" title="第2关"></a>第2关</h1><h2 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h2><p>有两个血巨厚的飞机会打你，杀掉一个另一个会恢复一下然后开会追踪的导弹炸你(强制将你的血量改为-1)</p><h2 id="解析-1"><a href="#解析-1" class="headerlink" title="解析"></a>解析</h2><p>找到两个飞机的血量改为1，然后击溃就可以了。</p><h1 id="第3关"><a href="#第3关" class="headerlink" title="第3关"></a>第3关</h1><h2 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h2><p>踩过所有条条，然后到门，(如果你千辛万苦终于踩完了，你会发现门被堵住了)</p><h2 id="解析-2"><a href="#解析-2" class="headerlink" title="解析"></a>解析</h2><p>一个是找踩过格子的计数器，一个是找位置的坐标。</p><p>计数器是4字节，坐标是单浮点数。</p><p>计数器改为12，坐标改为0.97即可过关</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《其他》 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CE </tag>
+            
+            <tag> 逆向 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Cheat Engine自带教程</title>
       <link href="/2022/02/03/%E3%80%8A%E5%85%B6%E4%BB%96%E3%80%8B/Cheat%20Engine%E8%87%AA%E5%B8%A6%E6%95%99%E7%A8%8B/"/>
       <url>/2022/02/03/%E3%80%8A%E5%85%B6%E4%BB%96%E3%80%8B/Cheat%20Engine%E8%87%AA%E5%B8%A6%E6%95%99%E7%A8%8B/</url>
