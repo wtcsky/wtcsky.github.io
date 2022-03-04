@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>学习Python - 4</title>
+      <link href="/2022/03/05/%E3%80%8APython%E3%80%8B/%E3%80%8A%E5%AD%A6%E4%B9%A0Python%E3%80%8B/%E5%AD%A6%E4%B9%A0Python%20-%204/"/>
+      <url>/2022/03/05/%E3%80%8APython%E3%80%8B/%E3%80%8A%E5%AD%A6%E4%B9%A0Python%E3%80%8B/%E5%AD%A6%E4%B9%A0Python%20-%204/</url>
+      
+        <content type="html"><![CDATA[<h1 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h1><p>其实就是C++里面的map。key 和 value的映射</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">dict1 = &#123;<span class="string">&quot;李宁&quot;</span>:<span class="string">&quot;一切皆有可能&quot;</span> ， <span class="string">&quot;耐克&quot;</span>:<span class="string">&quot;Just do it&quot;</span>&#125;</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> dict1 :</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;%s -&gt; %s&quot;</span> % (x , <span class="built_in">dict</span>[x]))</span><br></pre></td></tr></table></figure><p>空字典直接用大括号即可</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">empty = &#123;&#125;</span><br><span class="line">dict1 = &#123;x=<span class="number">1</span>,y=<span class="number">2</span>,z=<span class="number">3</span>&#125;</span><br></pre></td></tr></table></figure><h2 id="内置方法："><a href="#内置方法：" class="headerlink" title="内置方法："></a>内置方法：</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># fromkeys创造并返回一个新的字典</span></span><br><span class="line">    dict1 = &#123;&#125;</span><br><span class="line">    dict1.fromkeys((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) , <span class="string">&quot;Number&quot;</span>)</span><br><span class="line">    &#123;<span class="number">1</span>:<span class="string">&#x27;Number&#x27;</span>, <span class="number">2</span>:<span class="string">&#x27;Number&#x27;</span>, <span class="number">3</span>:<span class="string">&#x27;Number&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line">    dict2 = &#123;&#125;</span><br><span class="line">    dict2.fromkeys((<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>) , (<span class="string">&quot;a&quot;</span>,<span class="string">&quot;b&quot;</span>,<span class="string">&quot;c&quot;</span>))</span><br><span class="line">    &#123;<span class="number">1</span>:<span class="string">&#x27;a&#x27;</span>, <span class="number">2</span>:<span class="string">&#x27;b&#x27;</span>, <span class="number">3</span>:<span class="string">&#x27;c&#x27;</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># keys, values, items</span></span><br><span class="line">dict1.keys() <span class="comment"># 输出所有的key</span></span><br><span class="line">   dict1.values() <span class="comment">#输出所有的value</span></span><br><span class="line">    dict1.items() <span class="comment">#输出所有的项()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># get更宽松的方式去访问字典项</span></span><br><span class="line">dict1.get(x) <span class="comment"># 如果没有这一项就返回none</span></span><br><span class="line">    dict1.get(x,<span class="string">&quot;没有&quot;</span>) <span class="comment"># 如果没有这一项就返回&quot;没有&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以用in 和 not in来判断是否存在</span></span><br><span class="line"><span class="number">31</span> <span class="keyword">in</span> dict1</span><br><span class="line">    <span class="number">32</span> <span class="keyword">in</span> dict2</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 清空字典clear</span></span><br><span class="line">dict1.clear() <span class="comment"># 不要用覆盖的就用clear！</span></span><br><span class="line">    </span><br><span class="line"><span class="comment"># copy浅拷贝</span></span><br><span class="line">a = &#123;x=<span class="number">1</span>,y=<span class="number">2</span>,z=<span class="number">3</span>&#125;</span><br><span class="line">    b.copy(a)</span><br><span class="line">  <span class="comment"># a和b的id不同不是同一个空间</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># setdefault自动添加</span></span><br><span class="line">a.setdefault(<span class="number">3</span>) <span class="comment"># 如果没有这个key就会新建一个 3:None</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># updata更新字典</span></span><br><span class="line">a.updata(x = <span class="number">2</span>)<span class="comment"># 修改</span></span><br></pre></td></tr></table></figure><h3 id="打包"><a href="#打包" class="headerlink" title="打包"></a>打包</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span>(<span class="params">**params</span>) :</span></span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;有 %d 个参数&quot;</span> % <span class="built_in">len</span>(params))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;他们分别是:&quot;</span> , params)</span><br></pre></td></tr></table></figure><h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>其实就是C++中的set，也用大括号但是没有映射关系</p><p>会自动去重、从小到大排序</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">list1 = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>]</span><br><span class="line">list1 = <span class="built_in">list</span>(<span class="built_in">set</span>(list1))</span><br><span class="line">-&gt; list1 =  [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</span><br></pre></td></tr></table></figure><p>添加删除</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">set1.add(<span class="number">1</span>)</span><br><span class="line">set1.remove(<span class="number">1</span>)</span><br></pre></td></tr></table></figure><p>冻结集合</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set1 = <span class="built_in">frozenset</span>(&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>&#125;)</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《学习Python》 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python基础 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>学习Python - 2</title>
       <link href="/2022/03/04/%E3%80%8APython%E3%80%8B/%E3%80%8A%E5%AD%A6%E4%B9%A0Python%E3%80%8B/%E5%AD%A6%E4%B9%A0Python%20-%202/"/>
       <url>/2022/03/04/%E3%80%8APython%E3%80%8B/%E3%80%8A%E5%AD%A6%E4%B9%A0Python%E3%80%8B/%E5%AD%A6%E4%B9%A0Python%20-%202/</url>
@@ -1074,25 +1099,6 @@
     
     
     <entry>
-      <title>博客搭建日志-2</title>
-      <link href="/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97-2/"/>
-      <url>/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97-2/</url>
-      
-        <content type="html"><![CDATA[<p>时隔一天我开始写这一篇！这一篇主要就是讲一下如何美化博客和简单地维护博客。直接进入主题，我们的美化说白了就是下载别人做好的预设主题，然后我们通过修改参数来让这个博客有你的影子，变成自己喜欢的样子。我的这个博客用的主题是:Butterfly，在GitHub上就可以搜到，我在这里直接放上我使用的主题地址，以及如何使用的说明。</p><hr><h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><ul><li><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly主题Github地址</a> 这是主题在GitHub上的位置</li><li><a href="https://butterfly.js.org/posts/21cfbf15/">Butterfly 安裝文檔快速開始 | Butterfly</a> 这是主题官方的全套说明</li><li><a href="https://space.bilibili.com/13282871/video">卷二兔的个人空间_bilibili</a> 这是一位UP主带你一起修改</li></ul><hr><h1 id="简述如何安装Butterfly"><a href="#简述如何安装Butterfly" class="headerlink" title="简述如何安装Butterfly"></a>简述如何安装Butterfly</h1><p>因为配置的过程就是对照官方说明修改，所以我这里只说一下怎么安装吧，因为安装可能会出现点小问题！</p><ul><li>安装我们可以直接选择npm安装，打开你<strong>博客(上一篇博客提到的)所在的文件夹</strong>，右键Git Bash Here(注意一定要开管理员权限！)，输入<code>npm i hexo-theme-butterfly</code></li><li>打开<strong>博客所在的文件夹</strong>，打开里面的_config.yml，翻到最后，把<code>theme: landscape</code>改成<code>theme: butterfly</code></li><li>在<strong>博客所在的文件夹</strong>，右键Git Bash Here，输入<code>npm install hexo-renderer-pug hexo-renderer-stylus --save</code></li><li>把在<code>node_modules/hexo-theme-butterfly</code>路径里的<code>_config.yml</code>改名为<code>_config.butterfly.yml</code>然后复制到最开始的位置。</li></ul><p>以上就是安装的过程，在文档里也有，我只是再复述一遍，里面的hexo根目录指的是博客所在的文件夹。</p><hr><h1 id="简单地维护"><a href="#简单地维护" class="headerlink" title="简单地维护"></a>简单地维护</h1><p>依照文件配置完之后，就要开始写文章了，写文章也是要用Markdown(一种标记语言)，这里建议用Typora来写Markdown文章。</p><p>每一篇博客开头都是有固定格式的<a href="https://butterfly.js.org/posts/dc584b87/#Front-matter">Butterfly 安裝文檔(二) 主題頁面 | Butterfly</a>，具体看这里。</p><p>★添加标签、分类也是直接在格式上标记，上传的时候会自动帮你分类，网页上就会自动更新新的标签和分类。</p><p>写完文章以后，存放到<code>博客文件/source/_posts</code>路径里面，里面可以任意添加文件夹自己分类。</p><p>之后回到博客文件，右键Git Bash Here，输入指令。</p><p>关于指令<a href="https://www.jianshu.com/p/7b8faf77d1af">Hexo常用命令: - 简书)</a></p><p>我觉得常用的就是</p><p>hexo clean -&gt; hexo g -&gt; hexo d</p><p>这三个按顺序输入一遍就可以上传到你的网站，不过GitHub可能连不上出现错误。</p><p>hexo s 可以在本地运行你的网站(没有上传)。</p><hr><p>以上差不多就是美化和维护的措施了，当然我基本上没有说什么东西，因为有较我来说更为详细的，而我的文章大概率是不会有人来看的，之所以还要继续写下去，是为我自己看的(。-ω-)zzz。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 《博客搭建日志》 </category>
-          
-      </categories>
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>博客维护日志-1</title>
       <link href="/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-1/"/>
       <url>/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-1/</url>
@@ -1128,6 +1134,25 @@
       <categories>
           
           <category> 《博客维护日志》 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>博客搭建日志-2</title>
+      <link href="/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97-2/"/>
+      <url>/2021/10/27/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97-2/</url>
+      
+        <content type="html"><![CDATA[<p>时隔一天我开始写这一篇！这一篇主要就是讲一下如何美化博客和简单地维护博客。直接进入主题，我们的美化说白了就是下载别人做好的预设主题，然后我们通过修改参数来让这个博客有你的影子，变成自己喜欢的样子。我的这个博客用的主题是:Butterfly，在GitHub上就可以搜到，我在这里直接放上我使用的主题地址，以及如何使用的说明。</p><hr><h1 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h1><ul><li><a href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly主题Github地址</a> 这是主题在GitHub上的位置</li><li><a href="https://butterfly.js.org/posts/21cfbf15/">Butterfly 安裝文檔快速開始 | Butterfly</a> 这是主题官方的全套说明</li><li><a href="https://space.bilibili.com/13282871/video">卷二兔的个人空间_bilibili</a> 这是一位UP主带你一起修改</li></ul><hr><h1 id="简述如何安装Butterfly"><a href="#简述如何安装Butterfly" class="headerlink" title="简述如何安装Butterfly"></a>简述如何安装Butterfly</h1><p>因为配置的过程就是对照官方说明修改，所以我这里只说一下怎么安装吧，因为安装可能会出现点小问题！</p><ul><li>安装我们可以直接选择npm安装，打开你<strong>博客(上一篇博客提到的)所在的文件夹</strong>，右键Git Bash Here(注意一定要开管理员权限！)，输入<code>npm i hexo-theme-butterfly</code></li><li>打开<strong>博客所在的文件夹</strong>，打开里面的_config.yml，翻到最后，把<code>theme: landscape</code>改成<code>theme: butterfly</code></li><li>在<strong>博客所在的文件夹</strong>，右键Git Bash Here，输入<code>npm install hexo-renderer-pug hexo-renderer-stylus --save</code></li><li>把在<code>node_modules/hexo-theme-butterfly</code>路径里的<code>_config.yml</code>改名为<code>_config.butterfly.yml</code>然后复制到最开始的位置。</li></ul><p>以上就是安装的过程，在文档里也有，我只是再复述一遍，里面的hexo根目录指的是博客所在的文件夹。</p><hr><h1 id="简单地维护"><a href="#简单地维护" class="headerlink" title="简单地维护"></a>简单地维护</h1><p>依照文件配置完之后，就要开始写文章了，写文章也是要用Markdown(一种标记语言)，这里建议用Typora来写Markdown文章。</p><p>每一篇博客开头都是有固定格式的<a href="https://butterfly.js.org/posts/dc584b87/#Front-matter">Butterfly 安裝文檔(二) 主題頁面 | Butterfly</a>，具体看这里。</p><p>★添加标签、分类也是直接在格式上标记，上传的时候会自动帮你分类，网页上就会自动更新新的标签和分类。</p><p>写完文章以后，存放到<code>博客文件/source/_posts</code>路径里面，里面可以任意添加文件夹自己分类。</p><p>之后回到博客文件，右键Git Bash Here，输入指令。</p><p>关于指令<a href="https://www.jianshu.com/p/7b8faf77d1af">Hexo常用命令: - 简书)</a></p><p>我觉得常用的就是</p><p>hexo clean -&gt; hexo g -&gt; hexo d</p><p>这三个按顺序输入一遍就可以上传到你的网站，不过GitHub可能连不上出现错误。</p><p>hexo s 可以在本地运行你的网站(没有上传)。</p><hr><p>以上差不多就是美化和维护的措施了，当然我基本上没有说什么东西，因为有较我来说更为详细的，而我的文章大概率是不会有人来看的，之所以还要继续写下去，是为我自己看的(。-ω-)zzz。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《博客搭建日志》 </category>
           
       </categories>
       
