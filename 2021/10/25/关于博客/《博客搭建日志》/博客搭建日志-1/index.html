@@ -1,0 +1,262 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>博客搭建日志-1 | Sky的博客</title><meta name="keywords" content="博客 ， Sky"><meta name="author" content="Sky"><meta name="copyright" content="Sky"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="我是如何搭建博客以及遇到的一些问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客搭建日志-1">
+<meta property="og:url" content="https://wtcsky.github.io/2021/10/25/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97-1/index.html">
+<meta property="og:site_name" content="Sky的博客">
+<meta property="og:description" content="我是如何搭建博客以及遇到的一些问题">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2021/10/20/XM7ieC53zgKaL8l.png">
+<meta property="article:published_time" content="2021-10-24T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-10-25T16:35:56.822Z">
+<meta property="article:author" content="Sky">
+<meta property="article:tag" content="博客 ， Sky">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/10/20/XM7ieC53zgKaL8l.png"><link rel="shortcut icon" href="https://i.loli.net/2021/10/20/wzJx6qhNXKecvuB.jpg"><link rel="canonical" href="https://wtcsky.github.io/2021/10/25/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97-1/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"search.xml","languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: {"defaultEncoding":1,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: Sky","link":"链接: ","source":"来源: Sky的博客","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '博客搭建日志-1',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-10-26 00:35:56'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const fontSizeVal = saveToLocal.get('global-font-size')
+    if (fontSizeVal !== undefined) {
+      document.documentElement.style.setProperty('--global-font-size', fontSizeVal + 'px')
+    }
+    
+    const detectApple = () => {
+      if (GLOBAL_CONFIG_SITE.isHome && /iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 5.4.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/10/20/wzJx6qhNXKecvuB.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">文章</div><div class="length-num">49</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://i.loli.net/2021/10/20/XM7ieC53zgKaL8l.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Sky的博客</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于我</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">博客搭建日志-1</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2021-10-24T16:00:00.000Z" title="发表于 2021-10-25 00:00:00">2021-10-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2021-10-25T16:35:56.822Z" title="更新于 2021-10-26 00:35:56">2021-10-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E3%80%8B/">《博客搭建日志》</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="博客搭建日志-1"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>今天是10月25号，距离我起手搭建博客(其实就是套板子呼呼(。-ω-)zzz)已经过去七八天了，前两天就想开始写这一篇博客，但是嘛，前两天是周六周天，大家都懂的……<del>周六周天应该休息休息哈</del>。</p>
+<p>我个人认为搭建博客的基本流程就是 ：配置环境-&gt;搭建仓库-&gt;搭建框架-&gt;美化博客，可能下面有视频或文章和我的步骤顺序不太一样，但是无伤大雅。下面也会按照这个顺序捋一遍，当然我只是捋一遍，提到的步骤可能相对来说就比较少，因为我放的链接上有比较于我更加详尽、专业的操作，我只是作一个简单的复述可能会额外填上自己的几句话来让这个过程更加简单！</p>
+<h1 id="我是如何搭建博客的？"><a href="#我是如何搭建博客的？" class="headerlink" title="我是如何搭建博客的？"></a>我是如何搭建博客的？</h1><p>很明显啊，我也是一点都不懂的，完全是0基础，我前端课学到的尽数交还给老师了，但是吧这并不影响我搭建一个博客。在开始我的陈述之前，先在下面放上在我搭建博客的路程上给予了我帮助的一些视频和文章。</p>
+<hr>
+<h2 id="推荐的视频、文章"><a href="#推荐的视频、文章" class="headerlink" title="推荐的视频、文章"></a>推荐的视频、文章</h2><ol>
+<li><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mU4y1j72n?from=search&seid=7301864811981796136&spm_id_from=333.337.0.0">【2021最新版】保姆级Hexo+github搭建个人博客-bilibili</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/sinat_37781304/article/details/82729029"> hexo史上最全搭建教程_Fangzh的技术博客-CSDN博客</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.simon96.online/2018/11/10/hexo-env/">Hexo之搭建环境 | 遇见西门</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuqiyun/p/8133904.html">Node.js安装及环境配置之Windows篇 - 刘奇云 - 博客园</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xueweisuoyong/p/11914045.html">Windows系统Git安装教程（详解Git安装过程） - 学为所用 - 博客园</a></p>
+<p>……</p>
+</li>
+</ol>
+<p>当然网上还有很多优质的视频和文章来帮助你配置环境、搭建框架，我只是放上了几个我自己看到过的并且感觉对我比较有用的。这可能就是互联网的伟大之处吧，有很多人会来分享自己的知识，当你再做一件事情的时候，你发现曾经某个人也和你遇到了相同的问题，你就会觉得自己并不孤单，有很多和你一样的人在做这件事情。同样，把你的知识的枝叶伸展出去，给更多后来人带来便利，也会感到很有成就感。</p>
+<hr>
+<h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><ul>
+<li>Node.js下载</li>
+<li>Git下载</li>
+</ul>
+<h3 id="Node-js"><a href="#Node-js" class="headerlink" title="Node.js"></a>Node.js</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/en/download/">Download | Node.js (nodejs.org)</a>进入官网下载直接点Windows Installer</li>
+<li>找到下载位置(默认下载到<code> C:\Users\用户名\Downloads</code>)，下载的过程就是<strong>一直点下一步</strong>(可以直接安装到默认位置，改位置也可以照着教程来，如果没有特殊需求推荐直接安装默认C盘)</li>
+<li>如果你没有改安装位置就忽略掉这一步，如果你没有安装在C盘那么打开<a target="_blank" rel="noopener" href="https://www.cnblogs.com/liuqiyun/p/8133904.html">Node.js安装及环境配置之Windows篇 - 刘奇云 - 博客园</a>，然后翻到第五步</li>
+<li>最后Win+R(Win键就是windows键，在键盘左下角Alt左边那一个)打开运行，然后输入<code>cmd</code>，打开终端输入 <code>node -v</code>，如果显示一串版本数字而不是错误，再输入<code> npm -v</code>同样如此那么恭喜你完成了Node.js的安装</li>
+</ol>
+<p>Node.js是运行在服务端的 JavaScript。</p>
+<h3 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h3><ol>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/download/win">Git - Downloading Package (git-scm.com)</a>进入官网下载，直接点 64-bit Git for Windows Setup(由于是国外的网站所以可能会下的很慢)</li>
+<li>没特殊要求就一路下一步，安装地址也随便，不想思考就默认地址，具体<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xueweisuoyong/p/11914045.html">Windows系统Git安装教程（详解Git安装过程） - 学为所用 - 博客园</a></li>
+<li>最后Win+R打开运行，然后输入<code>cmd</code>，打开终端输入<code> git --version</code>，如果显示一串版本数字而不是错误，完成。</li>
+</ol>
+<p>这个就是用来把你的文件部署到Github上的命令窗口，对Github的操作要在这上面运行，可以直接通过文件打开，也可以鼠标右键显示的Git Bash here打开。</p>
+<hr>
+<h2 id="搭建仓库"><a href="#搭建仓库" class="headerlink" title="搭建仓库"></a>搭建仓库</h2><p>把你的数据存到Github的库中。</p>
+<p>详细内容：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1mU4y1j72n?p=2">【2021最新版】保姆级Hexo+github搭建个人博客_哔哩哔哩_bilibili</a></p>
+<h3 id="Github库"><a href="#Github库" class="headerlink" title="Github库"></a>Github库</h3><ol>
+<li>注册Github账号–<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv5107169">Github注册+登录方法 - 哔哩哔哩 (bilibili.com)</a>，然后你就有一个Github账号了(因为是国外网站，可能会登陆不上)</li>
+<li>点右上角头像 -&gt; 点击Your repository -&gt; 点击绿色的New -&gt; Repository name 下面输入<code>用户名.github.io</code>(用户名就是Owner下面那个注册的名字，如果后续不架域名，这个地址就是你的访问地址所以<strong>取一个好一点的用户名</strong>！！！)</li>
+</ol>
+<h3 id="关联Github"><a href="#关联Github" class="headerlink" title="关联Github"></a>关联Github</h3><ol>
+<li>打开任意文件夹，在<strong>文件夹内</strong>空白处右键 -&gt; 点击Git Bash here -&gt; 输入<code> ssh-keygen -t rsa -C &quot;邮件地址&quot;</code> (把双引号里面的邮箱地址四个字换成你<strong>注册Github时用的邮箱</strong>) -&gt; 敲四次回车</li>
+<li>打开<code>C:\Users\用户名\.ssh</code> -&gt; 用记事本打开<strong>id_rsa.pub</strong> -&gt; Ctrl + A(全选) -&gt; Ctrl + C(复制)</li>
+<li>打开Github -&gt; 右上角头像 -&gt; 点击Setting -&gt; 点击SSH and GPG keys -&gt; 点击绿色的New SSH key -&gt; 在Title下随便写(选择困难症就直接写博客 -&gt; 在Key下Ctrl + V(粘贴) -&gt; 点击绿色的Add SSH Key</li>
+<li>回到Git -&gt; 输入<code>ssh -T git@github.com </code>回车 -&gt; 输入 <code>yes</code>回车 -&gt; 出现……successfully……即为成功</li>
+</ol>
+<hr>
+<h2 id="搭建框架"><a href="#搭建框架" class="headerlink" title="搭建框架"></a>搭建框架</h2><p>这里我用的是Hexo所以我也只演示Hexo，有其他框架有兴趣的可以去网上搜一下。</p>
+<p><strong>★一定要用管理员权限来打开终端和Git！否则下载Hexo会Err失败!</strong>(详细见“常见问题”)</p>
+<h3 id="Hexo下载"><a href="#Hexo下载" class="headerlink" title="Hexo下载"></a>Hexo下载</h3><ol>
+<li><p>Win+R打开运行，然后输入<code>cmd</code>，打开终端输入<code>npm install hexo-cli -g </code>(复制上就行)，</p>
+</li>
+<li><p>输入<code>hexo -v</code>，如果显示一串版本数字而不是错误</p>
+</li>
+</ol>
+<p>★如果没有改Node.js的安装位置，安装的模块安装到<code>C:\Users\用户名\AppData\Roaming\npm</code>路径中(需要打开显示隐藏，AppData这个文件夹可能是隐藏的)。显示隐藏文件夹的步骤：打开我的电脑-&gt;点击上面的查看-&gt;在<strong>隐藏的项目</strong>上打钩</p>
+<h3 id="存放博客的文件夹-Hexo安装"><a href="#存放博客的文件夹-Hexo安装" class="headerlink" title="存放博客的文件夹(Hexo安装)"></a>存放博客的文件夹(Hexo安装)</h3><ol>
+<li><p>打开你想存放的位置(可以是C盘，也可以是其他的盘)</p>
+</li>
+<li><p>右键文件夹空白处点击Git Bash here(一定要保证是你想存放的地方！)</p>
+</li>
+<li><p>输入<code>hexo init myblog</code>(这里的myblog可以替换成你想要的名字，后面的myblog也相应改变)</p>
+</li>
+<li><p>输入 <code>cd myblog</code> -&gt; 输入 <code>npm install</code> </p>
+</li>
+<li><p>打开文件夹myblog -&gt; 然后用记事本打开_config.yml -&gt; 拖到最后(替换deploy)</p>
+<p>  deploy:<br>  type: git<br>  repository: 你的Github库的地址(Github右上角头像-&gt;点击Your repositories-&gt;点击xxx.github.io-&gt;点击绿色Code-&gt;复制网址)<br>  branch: main</p>
+</li>
+</ol>
+<h3 id="文件夹与Github库关联"><a href="#文件夹与Github库关联" class="headerlink" title="文件夹与Github库关联"></a>文件夹与Github库关联</h3><ol>
+<li>Git里面输入<code>npm install hexo-deployer-git --save</code></li>
+<li>输入<code>hexo g</code></li>
+<li>输入<code>hexo d</code> (此时会进行Github用户名验证和输入令牌，建议操作时一直开着Github)</li>
+<li>当需要你输入令牌时，打开Github-&gt;点击右上角头像-&gt;点击setting-&gt;点击Developer setting-&gt;点击Personal access tokens-&gt;点击Generate new token</li>
+<li>Note名字随便取，下面的Select scopes全选然后点击Generate token生成令牌，复制到第三步弹出来的令牌框。</li>
+</ol>
+<p><strong>★第3步可能会因为连接不上Github而失败(fatal:unable to access……)</strong></p>
+<hr>
+<p>完成上面的操作你就可以通过<strong>用户名.github.io</strong>来访问自己的页面了！！</p>
+<hr>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="配置环境-1"><a href="#配置环境-1" class="headerlink" title="配置环境"></a>配置环境</h2><ul>
+<li>可能比较因为是外国的网站所以会下载比较慢，会使用魔法应该可以提速。</li>
+</ul>
+<h2 id="搭建仓库-1"><a href="#搭建仓库-1" class="headerlink" title="搭建仓库"></a>搭建仓库</h2><ul>
+<li>这一步应该是最简单的了，除了可能连不上Github……</li>
+</ul>
+<h2 id="搭建框架-1"><a href="#搭建框架-1" class="headerlink" title="搭建框架"></a>搭建框架</h2><ul>
+<li>一定要用管理员权限来打开终端和Git！否则下载Hexo会Err失败<a target="_blank" rel="noopener" href="https://gxhxl.blog.csdn.net/article/details/109026374"> Error: EPERM: operation not permitted（操作权限问题）_司夏的博客-CSDN博客</a> ，可以用Win+X然后选择Windows终端(管理员)打开或者用Windows自带的搜索去搜cmd然后管理员权限启动。也可以和Git一样，找到快捷方式-&gt;右键属性-&gt;点击兼容性-&gt;点击以管理员身份运行此程序-&gt;确定。</li>
+<li>fatal:unable to access……，很多步骤都会出现这一句话，不要担心，这只是Github连不上了而已，和你没有关系。</li>
+<li>yml文件格式里的东西严格保持语法，’:’必须是英文状态下的，并且后面需要加一个空格，而且这种语言是靠缩进来辨别语句等级的。</li>
+</ul>
+<p>如果有什么问题可以联系我，我也会再添加到上面……感觉最多就是这些问题了。</p>
+<p>那么我们刚搭建好的博客打开一看全是Hexo，如何让他变得牛起来，下一篇日志我就会对于博客的美化与维护做一些叙述以及教学。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Sky</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://wtcsky.github.io/2021/10/25/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97-1/">https://wtcsky.github.io/2021/10/25/关于博客/《博客搭建日志》/博客搭建日志-1/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://wtcsky.github.io" target="_blank">Sky的博客</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"><div class="social-share" data-image="https://i.loli.net/2021/10/20/XM7ieC53zgKaL8l.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button button--animated"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="https://i.loli.net/2021/10/20/NFWDAZ58csUKujV.png" target="_blank"><img class="post-qr-code-img" src="https://i.loli.net/2021/10/20/NFWDAZ58csUKujV.png" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="https://i.loli.net/2021/10/20/WRv1BElQfrXOg9z.jpg" target="_blank"><img class="post-qr-code-img" src="https://i.loli.net/2021/10/20/WRv1BElQfrXOg9z.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2021/10/27/%E5%85%B3%E4%BA%8E%E7%AB%9E%E8%B5%9B(C,C++%E7%AE%97%E6%B3%95)/%E3%80%8ACodeForce%E5%88%B7%E9%A2%98%E5%BD%95%E3%80%8B/CodeForce%E8%A1%A8/"><img class="prev-cover" src="https://i.loli.net/2021/10/20/FQ4RWE8N31CYjDy.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">CodeForce刷题表</div></div></a></div><div class="next-post pull-right"><a href="/2021/10/24/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97-%E5%89%8D%E8%A8%80/"><img class="next-cover" src="https://i.loli.net/2021/10/20/R54t3iGvWTUYzo2.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">博客搭建日志-前言</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E6%98%AF%E5%A6%82%E4%BD%95%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2%E7%9A%84%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">我是如何搭建博客的？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E7%9A%84%E8%A7%86%E9%A2%91%E3%80%81%E6%96%87%E7%AB%A0"><span class="toc-number">1.1.</span> <span class="toc-text">推荐的视频、文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.</span> <span class="toc-text">配置环境</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js"><span class="toc-number">1.2.1.</span> <span class="toc-text">Node.js</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git"><span class="toc-number">1.2.2.</span> <span class="toc-text">Git</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E4%BB%93%E5%BA%93"><span class="toc-number">1.3.</span> <span class="toc-text">搭建仓库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Github%E5%BA%93"><span class="toc-number">1.3.1.</span> <span class="toc-text">Github库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E8%81%94Github"><span class="toc-number">1.3.2.</span> <span class="toc-text">关联Github</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E6%A1%86%E6%9E%B6"><span class="toc-number">1.4.</span> <span class="toc-text">搭建框架</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Hexo%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.4.1.</span> <span class="toc-text">Hexo下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%98%E6%94%BE%E5%8D%9A%E5%AE%A2%E7%9A%84%E6%96%87%E4%BB%B6%E5%A4%B9-Hexo%E5%AE%89%E8%A3%85"><span class="toc-number">1.4.2.</span> <span class="toc-text">存放博客的文件夹(Hexo安装)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8EGithub%E5%BA%93%E5%85%B3%E8%81%94"><span class="toc-number">1.4.3.</span> <span class="toc-text">文件夹与Github库关联</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83-1"><span class="toc-number">2.1.</span> <span class="toc-text">配置环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E4%BB%93%E5%BA%93-1"><span class="toc-number">2.2.</span> <span class="toc-text">搭建仓库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E6%A1%86%E6%9E%B6-1"><span class="toc-number">2.3.</span> <span class="toc-text">搭建框架</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://i.loli.net/2019/09/09/5oDRkWVKctx2b6A.png')"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By Sky</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">Hi , welcome to my blog !</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="font-plus" type="button" title="放大字体"><i class="fas fa-plus"></i></button><button id="font-minus" type="button" title="缩小字体"><i class="fas fa-minus"></i></button><button id="translateLink" type="button" title="简繁转换">简</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"></div><span class="search-close-button"><i class="fas fa-times"></i></span></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"></div><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/dist/click-heart.min.js" async="async" mobile="false"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
