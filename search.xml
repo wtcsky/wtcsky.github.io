@@ -339,6 +339,33 @@
     
     
     <entry>
+      <title>【3】有序表的最小和(优先队列)</title>
+      <link href="/2022/01/19/%E5%85%B3%E4%BA%8E%E7%AB%9E%E8%B5%9B(C,C++%E7%AE%97%E6%B3%95)/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E3%80%903%E3%80%91%E6%9C%89%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%9C%80%E5%B0%8F%E5%92%8C/"/>
+      <url>/2022/01/19/%E5%85%B3%E4%BA%8E%E7%AB%9E%E8%B5%9B(C,C++%E7%AE%97%E6%B3%95)/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E3%80%903%E3%80%91%E6%9C%89%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%9C%80%E5%B0%8F%E5%92%8C/</url>
+      
+        <content type="html"><![CDATA[<h1 id="有序表的最小和"><a href="#有序表的最小和" class="headerlink" title="有序表的最小和"></a>有序表的最小和</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给出两个长度为n的有序表A和B，在A和B中各任取一个元素，可以得到n^2个和，求这些和中最小的n个</p><h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>第一行包含一个整数n（n≤400000n≤400000）</p><p>第二行与第三行分别有n个整数，分别代表有序表A和B，整数之间由一个空格隔开，大小在长整数范围之内，保证有序表的数据单调递增。</p><h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>输出共n行，每行一个整数，第i行为第i小的和，数据保证在长整数范围之内</p><h2 id="Samples"><a href="#Samples" class="headerlink" title="Samples"></a>Samples</h2><p>Input</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 2 5</span><br><span class="line">2 4 7</span><br></pre></td></tr></table></figure><p>Output</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure><h2 id="AC-CODE："><a href="#AC-CODE：" class="headerlink" title="AC CODE："></a>AC CODE：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span>+<span class="number">7</span>; </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">4e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> a[N],b[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> i,j;</span><br><span class="line"><span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt; (node a,node b) &#123;</span><br><span class="line"><span class="keyword">return</span> a.w &gt; b.w;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue&lt;node&gt; q;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> n,x,y;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;b[i]);</span><br><span class="line">q.<span class="built_in">push</span>(&#123;a[i]+b[<span class="number">1</span>],i,<span class="number">1</span>&#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">node tmp = q.<span class="built_in">top</span>();q.<span class="built_in">pop</span>();</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,tmp.w);</span><br><span class="line">x = tmp.i,y = tmp.j;</span><br><span class="line">tmp.w = a[x]+b[y+<span class="number">1</span>];</span><br><span class="line">tmp.j++; </span><br><span class="line">q.<span class="built_in">push</span>(tmp);</span><br><span class="line">&#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h2><p>同样是很有趣的一道题。</p><p>假设有a,b两个数组，首先我们知道最小的和必然是a[1] + b[1]</p><p>那么第二小的是什么呢？</p><p>可能是a[1] + b[2] 也可能是 a[2] + b[1] 做成表格是这样的:</p><p><img src="https://s2.loli.net/2022/01/19/26BPc1FGKgfDxAI.png" alt="有序表的最小和.png"></p><p>假设每个数组有四项，第一小的就要从第一列找到最小的一个输出，然后被选中的向后推移一项继续比较每一行被选中的。</p><p>最小的只能从这n个中产生。</p><p>模拟一下过程就是code中那样。</p><p>值得一提的是优先队列制定排序的规则，这里用的是在结构体中重载运算符，之后会专门做一篇博客解释这个。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《练习题》 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 优先队列 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【2】丑数(优先队列)</title>
       <link href="/2022/01/19/%E5%85%B3%E4%BA%8E%E7%AB%9E%E8%B5%9B(C,C++%E7%AE%97%E6%B3%95)/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E3%80%902%E3%80%91%E4%B8%91%E6%95%B0/"/>
       <url>/2022/01/19/%E5%85%B3%E4%BA%8E%E7%AB%9E%E8%B5%9B(C,C++%E7%AE%97%E6%B3%95)/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E3%80%902%E3%80%91%E4%B8%91%E6%95%B0/</url>
@@ -366,25 +393,23 @@
     
     
     <entry>
-      <title>【3】有序表的最小和(优先队列)</title>
-      <link href="/2022/01/19/%E5%85%B3%E4%BA%8E%E7%AB%9E%E8%B5%9B(C,C++%E7%AE%97%E6%B3%95)/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E3%80%903%E3%80%91%E6%9C%89%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%9C%80%E5%B0%8F%E5%92%8C/"/>
-      <url>/2022/01/19/%E5%85%B3%E4%BA%8E%E7%AB%9E%E8%B5%9B(C,C++%E7%AE%97%E6%B3%95)/%E3%80%8A%E7%BB%83%E4%B9%A0%E9%A2%98%E3%80%8B/%E3%80%903%E3%80%91%E6%9C%89%E5%BA%8F%E8%A1%A8%E7%9A%84%E6%9C%80%E5%B0%8F%E5%92%8C/</url>
+      <title>Python和Java的IDE</title>
+      <link href="/2022/01/17/%E4%B8%8E%E7%BC%96%E7%A8%8B%E6%97%A0%E5%85%B3/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Python%E3%80%81Java%E7%9A%84IDE/"/>
+      <url>/2022/01/17/%E4%B8%8E%E7%BC%96%E7%A8%8B%E6%97%A0%E5%85%B3/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Python%E3%80%81Java%E7%9A%84IDE/</url>
       
-        <content type="html"><![CDATA[<h1 id="有序表的最小和"><a href="#有序表的最小和" class="headerlink" title="有序表的最小和"></a>有序表的最小和</h1><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>给出两个长度为n的有序表A和B，在A和B中各任取一个元素，可以得到n^2个和，求这些和中最小的n个</p><h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>第一行包含一个整数n（n≤400000n≤400000）</p><p>第二行与第三行分别有n个整数，分别代表有序表A和B，整数之间由一个空格隔开，大小在长整数范围之内，保证有序表的数据单调递增。</p><h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>输出共n行，每行一个整数，第i行为第i小的和，数据保证在长整数范围之内</p><h2 id="Samples"><a href="#Samples" class="headerlink" title="Samples"></a>Samples</h2><p>Input</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">1 2 5</span><br><span class="line">2 4 7</span><br></pre></td></tr></table></figure><p>Output</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure><h2 id="AC-CODE："><a href="#AC-CODE：" class="headerlink" title="AC CODE："></a>AC CODE：</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span>+<span class="number">7</span>; </span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span> ;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">4e5</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">int</span> a[N],b[N];</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span> &#123;</span></span><br><span class="line"><span class="keyword">int</span> w;</span><br><span class="line"><span class="keyword">int</span> i,j;</span><br><span class="line"><span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span>&lt; (node a,node b) &#123;</span><br><span class="line"><span class="keyword">return</span> a.w &gt; b.w;</span><br><span class="line">&#125;</span><br><span class="line">&#125;;</span><br><span class="line">priority_queue&lt;node&gt; q;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> n,x,y;</span><br><span class="line">cin&gt;&gt;n;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;a[i]);</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line"><span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;b[i]);</span><br><span class="line">q.<span class="built_in">push</span>(&#123;a[i]+b[<span class="number">1</span>],i,<span class="number">1</span>&#125;);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) &#123;</span><br><span class="line">node tmp = q.<span class="built_in">top</span>();q.<span class="built_in">pop</span>();</span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>,tmp.w);</span><br><span class="line">x = tmp.i,y = tmp.j;</span><br><span class="line">tmp.w = a[x]+b[y+<span class="number">1</span>];</span><br><span class="line">tmp.j++; </span><br><span class="line">q.<span class="built_in">push</span>(tmp);</span><br><span class="line">&#125;</span><br><span class="line"> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="解析："><a href="#解析：" class="headerlink" title="解析："></a>解析：</h2><p>同样是很有趣的一道题。</p><p>假设有a,b两个数组，首先我们知道最小的和必然是a[1] + b[1]</p><p>那么第二小的是什么呢？</p><p>可能是a[1] + b[2] 也可能是 a[2] + b[1] 做成表格是这样的:</p><p><img src="https://s2.loli.net/2022/01/19/26BPc1FGKgfDxAI.png" alt="有序表的最小和.png"></p><p>假设每个数组有四项，第一小的就要从第一列找到最小的一个输出，然后被选中的向后推移一项继续比较每一行被选中的。</p><p>最小的只能从这n个中产生。</p><p>模拟一下过程就是code中那样。</p><p>值得一提的是优先队列制定排序的规则，这里用的是在结构体中重载运算符，之后会专门做一篇博客解释这个。</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h1><p>pycharm应该是python用的最IDE(集成开发环境)</p><p>直接在官网下载<a href="https://www.jetbrains.com/pycharm/download/#section=windows">Download PyCharm: Python IDE for Professional Developers by JetBrains</a></p><p>建议下载社区版(Community)，也就是右边的那个，因为是免费的。</p><h1 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h1><p>IDEA也是java用的最多的IDE</p><p>直接在官网下载<a href="https://www.jetbrains.com/idea/download/#section=windows">Download IntelliJ IDEA: The Capable &amp; Ergonomic Java IDE by JetBrains</a></p><p>也是建议下载社区版，毕竟是免费的，不然试用30天(也好像没有了)</p><p>当然也可以用神奇的方法用专业版，没有啥特别需求的建议还是直接用社区版。</p><h1 id="TIPS："><a href="#TIPS：" class="headerlink" title="TIPS："></a>TIPS：</h1><p>安装完以后，打开可以发现一个plugin(插件)，然后直接在里面搜索Chinese，可以找到几个插件，下载第二个，图标是一个‘汉’的插件，然后重启IDE就可以变成中文了！</p>]]></content>
       
       
       <categories>
           
-          <category> 《练习题》 </category>
+          <category> 《实用软件/工具》 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 数据结构 </tag>
-            
-            <tag> 优先队列 </tag>
+            <tag> Tool </tag>
             
         </tags>
       
@@ -437,31 +462,6 @@
         <tags>
             
             <tag> C++ </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Python和Java的IDE</title>
-      <link href="/2022/01/17/%E4%B8%8E%E7%BC%96%E7%A8%8B%E6%97%A0%E5%85%B3/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Python%E3%80%81Java%E7%9A%84IDE/"/>
-      <url>/2022/01/17/%E4%B8%8E%E7%BC%96%E7%A8%8B%E6%97%A0%E5%85%B3/%E3%80%8A%E8%BD%AF%E4%BB%B6%E3%80%81%E5%B7%A5%E5%85%B7%E3%80%8B/Python%E3%80%81Java%E7%9A%84IDE/</url>
-      
-        <content type="html"><![CDATA[<h1 id="Pycharm"><a href="#Pycharm" class="headerlink" title="Pycharm"></a>Pycharm</h1><p>pycharm应该是python用的最IDE(集成开发环境)</p><p>直接在官网下载<a href="https://www.jetbrains.com/pycharm/download/#section=windows">Download PyCharm: Python IDE for Professional Developers by JetBrains</a></p><p>建议下载社区版(Community)，也就是右边的那个，因为是免费的。</p><h1 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA"></a>IDEA</h1><p>IDEA也是java用的最多的IDE</p><p>直接在官网下载<a href="https://www.jetbrains.com/idea/download/#section=windows">Download IntelliJ IDEA: The Capable &amp; Ergonomic Java IDE by JetBrains</a></p><p>也是建议下载社区版，毕竟是免费的，不然试用30天(也好像没有了)</p><p>当然也可以用神奇的方法用专业版，没有啥特别需求的建议还是直接用社区版。</p><h1 id="TIPS："><a href="#TIPS：" class="headerlink" title="TIPS："></a>TIPS：</h1><p>安装完以后，打开可以发现一个plugin(插件)，然后直接在里面搜索Chinese，可以找到几个插件，下载第二个，图标是一个‘汉’的插件，然后重启IDE就可以变成中文了！</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 《实用软件/工具》 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Tool </tag>
             
         </tags>
       
@@ -1055,6 +1055,31 @@
     
     
     <entry>
+      <title>博客维护日志-1</title>
+      <link href="/2021/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA+%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-1/"/>
+      <url>/2021/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA+%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>发现文章下面该文章链接是一个错误的位置并且还有乱码！</p><h1 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h1><p>乱码是因为没有打开解码功能，导致路径中的中文显示为乱码，只需要把<code>_config.butterfly.yml</code>中<code>post_copyright</code>下的<code>decode: false</code>改为<code>decode: true</code> 即可。</p><p>而链接错误是因为我没有设置，只需要把<code>_config.yml</code>中最开始的<code>url: https://example.com</code>网址改成自己的网址即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 《博客维护日志》 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 维护博客 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>博客搭建日志-2</title>
       <link href="/2021/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA+%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97-2/"/>
       <url>/2021/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA+%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E6%97%A5%E5%BF%97-2/</url>
@@ -1087,31 +1112,6 @@
           
       </categories>
       
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>博客维护日志-1</title>
-      <link href="/2021/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA+%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-1/"/>
-      <url>/2021/10/27/%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2/%E3%80%8A%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA+%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97%E3%80%8B/%E5%8D%9A%E5%AE%A2%E7%BB%B4%E6%8A%A4%E6%97%A5%E5%BF%97-1/</url>
-      
-        <content type="html"><![CDATA[<h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>发现文章下面该文章链接是一个错误的位置并且还有乱码！</p><h1 id="解决方式"><a href="#解决方式" class="headerlink" title="解决方式"></a>解决方式</h1><p>乱码是因为没有打开解码功能，导致路径中的中文显示为乱码，只需要把<code>_config.butterfly.yml</code>中<code>post_copyright</code>下的<code>decode: false</code>改为<code>decode: true</code> 即可。</p><p>而链接错误是因为我没有设置，只需要把<code>_config.yml</code>中最开始的<code>url: https://example.com</code>网址改成自己的网址即可。</p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 《博客维护日志》 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 维护博客 </tag>
-            
-        </tags>
       
     </entry>
     
